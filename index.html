@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laila Andrade — Product Designer</title>
+<link rel="icon" type="image/png" href="assets/foto-sobre-mim.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0d0f14;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 0;
+  transition: background 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(13,15,20,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(255,255,255,0.07);
+}
+.nav-inner {
+  max-width: 1160px; margin: 0 auto; padding: 18px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: inherit;
+}
+.nav-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #304FFE 0%, #6E95FF 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+.nav-name { font-size: 14px; font-weight: 500; color: #fff; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-link {
+  font-size: 14px; font-weight: 400; color: #b8bdd4;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-link:hover { color: #fff; }
+.nav-cta {
+  font-size: 13px; font-weight: 500; color: #6E95FF;
+  background: rgba(48,79,254,0.1); border: 1px solid rgba(110,149,255,0.2);
+  padding: 8px 18px; border-radius: 100px; text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-cta:hover { background: rgba(48,79,254,0.2); border-color: rgba(110,149,255,0.35); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 148px 0 88px;
+  border-bottom: 1px solid #1a1f2a;
+}
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 400; line-height: 1.14; letter-spacing: -0.02em;
+  color: #fff; max-width: 680px; margin-bottom: 18px;
+  opacity: 0; transform: translateY(22px);
+  animation: fadeUp 0.75s ease 0.1s forwards;
+}
+.hero-subtitle {
+  font-size: 15px; font-weight: 400; color: #b8bdd4;
+  max-width: 440px; line-height: 1.7; margin-bottom: 36px;
+  opacity: 0; transform: translateY(22px);
+  animation: fadeUp 0.75s ease 0.28s forwards;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500; color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 11px 22px; border-radius: 100px; text-decoration: none;
+  transition: background 0.25s, border-color 0.25s;
+  opacity: 0; transform: translateY(22px);
+  animation: fadeUp 0.75s ease 0.46s forwards;
+}
+.hero-cta:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SHARED SECTION HEADING ─── */
+.s-heading {
+  font-size: 24px; font-weight: 600; color: #fff;
+  margin-bottom: 32px; letter-spacing: -0.015em;
+}
+
+/* ─── CASES ─── */
+.cases { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.cases-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-top: 0;
+}
+.case-card {
+  display: block; text-decoration: none; color: inherit;
+  background: #1e2330; border: 1px solid #252b3d;
+  border-radius: 14px; overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+.case-card:hover {
+  border-color: rgba(110,149,255,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(48,79,254,0.12);
+}
+.case-img {
+  width: 100%; aspect-ratio: 16/10; overflow: hidden;
+  background: #13171f; border-bottom: 1px solid #1e2438;
+  position: relative;
+}
+.case-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.case-card:hover .case-img img { transform: scale(1.02); }
+.case-body { padding: 18px 22px 22px; }
+.case-cat {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #6E95FF; margin-bottom: 8px;
+}
+.case-desc { font-size: 17px; color: #b8bdd4; line-height: 1.6; }
+.case-foot {
+  display: flex; align-items: center; justify-content: flex-end;
+  margin-top: 16px;
+}
+.case-arrow {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(110,149,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: #6E95FF; font-size: 13px; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.case-card:hover .case-arrow {
+  background: rgba(48,79,254,0.15); border-color: rgba(110,149,255,0.5);
+}
+
+/* ─── SKILLS + EXPERIENCE ─── */
+.skills-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+
+.skill-item {
+  display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start;
+  padding: 20px 0; border-bottom: 1px solid #1a1f2a;
+}
+.skill-item:first-of-type { border-top: 1px solid #1a1f2a; }
+.skill-ic {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(48,79,254,0.1); border: 1px solid rgba(110,149,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.skill-ic svg { width: 15px; height: 15px; stroke: #6E95FF; fill: none; stroke-width: 1.5; }
+.skill-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.skill-tags { font-size: 13px; color: #b8bdd4; line-height: 1.55; }
+
+.exp-item {
+  display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: center;
+  padding: 16px 0; border-bottom: 1px solid #1a1f2a;
+}
+.exp-item:first-of-type { border-top: 1px solid #1a1f2a; }
+.exp-logo {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.exp-role { font-size: 15px; font-weight: 600; color: #fff; }
+.exp-company { font-size: 13px; color: #b8bdd4; }
+.exp-period { font-size: 12px; color: #6b7280; margin-top: 1px; }
+
+/* ─── SOBRE MIM ─── */
+.about-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: stretch; }
+.about-photo {
+  width: 100%; border-radius: 12px; overflow: hidden;
+  border: 1px solid #1e2438;
+  background: #1e2330;
+}
+.about-name { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 20px; }
+.about-bio { font-size: 16px; color: #b8bdd4; line-height: 1.8; margin-bottom: 14px; }
+.about-bio strong { color: #fff; font-weight: 500; }
+.about-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 500; color: #6E95FF;
+  text-decoration: none; margin-top: 8px;
+  transition: opacity 0.2s;
+}
+.about-link:hover { opacity: 0.75; }
+
+/* ─── FAQ ─── */
+.faq-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.faq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-top: 32px;
+  align-items: start;
+}
+.faq-item {
+  background: #1e2330; padding: 24px 28px;
+  border: 1px solid #252b3d; border-radius: 12px;
+  cursor: pointer; user-select: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.faq-item:hover { background: #212840; border-color: #2a3050; }
+.faq-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.faq-q { font-size: 15px; font-weight: 500; color: #fff; line-height: 1.5; flex: 1; }
+.faq-btn {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.14); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #b8bdd4; line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s, border-color 0.25s, color 0.25s;
+}
+.faq-item.open .faq-btn {
+  transform: rotate(45deg);
+  background: rgba(48,79,254,0.15); border-color: rgba(110,149,255,0.35); color: #6E95FF;
+}
+.faq-a {
+  font-size: 14px; color: #b8bdd4; line-height: 1.75;
+  overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, margin-top 0.3s ease;
+}
+.faq-item.open .faq-a { max-height: 600px; opacity: 1; margin-top: 16px; }
+
+/* ─── CTA ─── */
+.cta-section { padding: 96px 0 88px; }
+.cta-inner {
+  display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center;
+}
+.cta-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(24px, 2.6vw, 34px); font-weight: 400; line-height: 1.2; letter-spacing: -0.015em;
+  color: #fff; margin-bottom: 10px;
+}
+.cta-sub { font-size: 15px; color: #b8bdd4; line-height: 1.65; max-width: 400px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-size: 15px; font-weight: 500; color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 15px 28px; border-radius: 100px; text-decoration: none;
+  transition: background 0.25s, border-color 0.25s;
+  flex-shrink: 0;
+}
+.cta-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.28); }
+
+/* ─── FOOTER ─── */
+.footer { border-top: 1px solid #1a1f2a; padding: 24px 0; }
+.footer-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size: 13px; color: #6b7280; }
+.footer-link { font-size: 13px; color: #b8bdd4; text-decoration: none; transition: color 0.2s; }
+.footer-link:hover { color: #fff; }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0; transform: translateX(-24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal-left.in { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0; transform: translateX(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal-right.in { opacity: 1; transform: translateX(0); }
+.reveal-scale {
+  opacity: 0; transform: scale(0.97);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-scale.in { opacity: 1; transform: scale(1); }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+.d5 { transition-delay: 0.40s; }
+
+/* ─── PROGRESS BAR ─── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 300;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, #304FFE 0%, #6E95FF 100%);
+  transition: width 0.12s linear;
+  pointer-events: none;
+}
+
+/* ─── SECTION HEADING UNDERLINE ANIM ─── */
+.s-heading {
+  position: relative; display: inline-block;
+}
+.s-heading::after {
+  content: ''; display: block; position: absolute;
+  bottom: -6px; left: 0; width: 0; height: 2px;
+  background: #304FFE; border-radius: 2px;
+  transition: width 0.55s cubic-bezier(0.4,0,0.2,1) 0.2s;
+}
+.s-heading.in::after { width: 32px; }
+
+/* ─── SKILLS ALIGNED GRID ─── */
+.skills-outer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+}
+.skills-outer > *:nth-child(3),
+.skills-outer > *:nth-child(4) {
+  border-top: 1px solid #1a1f2a;
+}
+
+/* ─── ABOUT PHOTO ─── */
+.about-grid { align-items: start; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .wrap { padding: 0 20px; }
+  .nav-inner { padding: 14px 20px; }
+  .nav-link { display: none; }
+  .hero { padding: 100px 0 56px; }
+  .hero-title { font-size: clamp(26px, 7vw, 38px); }
+  .hero-subtitle { font-size: 14px; margin-bottom: 28px; }
+  .cases { padding: 56px 0; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .skills-section { padding: 56px 0; }
+  .skills-outer { display: flex; flex-direction: column; }
+  .skills-outer > *:nth-child(1) { order: 1; }
+  .skills-outer > *:nth-child(3) { order: 2; }
+  .skills-outer > *:nth-child(5) { order: 3; }
+  .skills-outer > *:nth-child(7) { order: 4; }
+  .skills-outer > *:nth-child(9) { order: 5; }
+  .skills-outer > *:nth-child(11) { order: 6; }
+  .skills-outer > *:nth-child(2) { order: 7; margin-top: 32px; }
+  .skills-outer > *:nth-child(4) { order: 8; }
+  .skills-outer > *:nth-child(6) { order: 9; }
+  .skills-outer > *:nth-child(8) { order: 10; }
+  .skills-outer > *:nth-child(10) { order: 11; }
+  .skills-outer > *:nth-child(12) { order: 12; }
+  .about-section { padding: 56px 0; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-height: 300px; overflow: hidden; }
+  .faq-section { padding: 56px 0; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 56px 0 48px; }
+  .cta-inner { grid-template-columns: 1fr; gap: 24px; }
+  .cta-title { font-size: clamp(22px, 6vw, 28px); }
+  .cta-btn { white-space: normal; text-align: center; }
+  .footer-inner { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<!-- NAV -->
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-avatar"><img src="assets/foto-sobre-mim.png" alt="Laila Andrade" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:50%;display:block;"></div>
+      <span class="nav-name">Laila Andrade</span>
+    </a>
+    <div class="nav-links">
+      <a href="#cases" class="nav-link">Cases</a>
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="mailto:andrade.laila@hotmail.com" class="nav-cta">Entrar em contato</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
+    <p class="hero-subtitle" style="max-width:none;">Product Designer na Qeevo — Marketplace de educação que já impactou 1.6 milhão de alunos.<br>Aberta a conversas sobre novas oportunidades.</p>
+    <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+  </div>
+</section>
+
+<!-- CASES SELECIONADOS -->
+<section class="cases" id="cases">
+  <div class="wrap">
+    <h2 class="s-heading reveal">Cases selecionados</h2>
+    <div class="cases-grid">
+
+      <a href="iplp.html" class="case-card reveal d1">
+        <div class="case-img">
+          <img src="assets/capa-case-iplp.png" alt="iPLP — Da listagem genérica à vitrine da instituição" loading="lazy">
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Da listagem genérica à vitrine da instituição: + 39,1% na taxa de matrícula</p>
+          <div class="case-foot"><div class="case-arrow">→</div></div>
+        </div>
+      </a>
+
+      <a href="ies.html" class="case-card reveal d2">
+        <div class="case-img">
+          <img src="assets/capa-case-iespage.png" alt="IES Page Branded — Estratégia branded" loading="lazy">
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Página de instituição como estratégia branded: + 76% YoY na conversão para pagos</p>
+          <div class="case-foot"><div class="case-arrow">→</div></div>
+        </div>
+      </a>
+
+      <a href="card.html" class="case-card reveal d1">
+        <div class="case-img">
+          <img src="assets/capa-case-card.png" alt="Card de Oferta — Arquitetura de componente único" loading="lazy">
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Arquitetura de componente único: como a unificação do card melhorou funil e eliminou custo</p>
+          <div class="case-foot"><div class="case-arrow">→</div></div>
+        </div>
+      </a>
+
+      <a href="paystation.html" class="case-card reveal d2">
+        <div class="case-img">
+          <img src="assets/capa-case-paystation.png" alt="Paystation — Checkout white label desacoplado" loading="lazy">
+        </div>
+        <div class="case-body">
+          <p class="case-desc">Paystation: checkout white label desacoplado e escalável</p>
+          <div class="case-foot"><div class="case-arrow">→</div></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPETÊNCIAS + EXPERIÊNCIA -->
+<section class="skills-section" id="sobre">
+  <div class="wrap">
+    <div class="skills-outer">
+
+      <!-- Headings -->
+      <h2 class="s-heading reveal">Competências</h2>
+      <h2 class="s-heading reveal d1">Experiência</h2>
+
+      <!-- Row 1 -->
+      <div class="skill-item reveal-left d1">
+        <div class="skill-ic">
+          <svg viewBox="0 0 16 16"><path d="M8 1L9.8 6H15L10.6 9.1L12.4 14L8 10.9L3.6 14L5.4 9.1L1 6H6.2Z"/></svg>
+        </div>
+        <div>
+          <div class="skill-name">Produto &amp; Estratégia</div>
+          <div class="skill-tags">Discovery, Roadmap, Definição de fluxos, Heurísticas, OKRs, Alinhamento stakeholders</div>
+        </div>
+      </div>
+      <div class="exp-item reveal-right d1">
+        <div class="exp-logo" style="background:#1a1a1a;overflow:hidden;"><img src="assets/logo-qeevo.png" alt="Qeevo" style="width:100%;height:100%;object-fit:contain;display:block;" onerror="this.parentElement.innerHTML='<span style='font-size:11px;font-weight:700;color:#fff;'>Q</span>'"></div>
+        <div>
+          <div class="exp-role">Product Designer Senior / Leader</div>
+          <div class="exp-company">Qeevo (Quero Educação)</div>
+          <div class="exp-period">2025 - atual</div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="skill-item reveal-left d2">
+        <div class="skill-ic">
+          <svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1"/><rect x="9" y="9" width="5.5" height="5.5" rx="1"/></svg>
+        </div>
+        <div>
+          <div class="skill-name">Design &amp; Prototipação</div>
+          <div class="skill-tags">Figma (variáveis, auto layout, componentes, Design System, MCP)</div>
+        </div>
+      </div>
+      <div class="exp-item reveal-right d2">
+        <div class="exp-logo" style="background:#fff;overflow:hidden;"><img src="assets/logo-cuponomia.png" alt="Cuponomia" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span style='font-size:11px;font-weight:700;color:#7c3aed;'>C</span>'"></div>
+        <div>
+          <div class="exp-role">Product Designer Sênior</div>
+          <div class="exp-company">Cuponomia</div>
+          <div class="exp-period">2024 - 2025</div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="skill-item reveal-left d3">
+        <div class="skill-ic">
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v4M8 11.5v.5"/></svg>
+        </div>
+        <div>
+          <div class="skill-name">IA &amp; Automação</div>
+          <div class="skill-tags">Claude (Anthropic), ChatGPT, NotebookLM, entre outros modelos - aplicados a research, reviews e geração de referências</div>
+        </div>
+      </div>
+      <div class="exp-item reveal-right d3">
+        <div class="exp-logo" style="background:#fff;overflow:hidden;"><img src="assets/logo-quero.png" alt="Quero" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='<span style='font-size:11px;font-weight:700;color:#304FFE;'>Q</span>'"></div>
+        <div>
+          <div class="exp-role">Product Designer</div>
+          <div class="exp-company">Quero Educação</div>
+          <div class="exp-period">2021 - 2024</div>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="skill-item reveal-left d4">
+        <div class="skill-ic">
+          <svg viewBox="0 0 16 16"><polyline points="1,12 4.5,7.5 7.5,9.5 11,4.5 14.5,6.5"/></svg>
+        </div>
+        <div>
+          <div class="skill-name">Research &amp; Dados</div>
+          <div class="skill-tags">Entrevistas com usuários, Surveys, Testes de usabilidade, Maze, Hotjar, Clarity, GA4, Metabase</div>
+        </div>
+      </div>
+      <div class="exp-item reveal-right d4">
+        <div class="exp-logo" style="background:#fff;overflow:hidden;"><img src="assets/logo-studio7.png" alt="Studio 7" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" onerror="this.parentElement.innerHTML='<span style='font-size:11px;font-weight:700;color:#374151;'>7</span>'"></div>
+        <div>
+          <div class="exp-role">Gerente geral / Designer</div>
+          <div class="exp-company">Studio 7</div>
+          <div class="exp-period">2019 - 2021</div>
+        </div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="skill-item reveal-left d5">
+        <div class="skill-ic">
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"/><circle cx="3.5" cy="11" r="2"/><circle cx="12.5" cy="11" r="2"/><path d="M6 8C4.5 8.5 2 9.5 1.5 11M10 8C11.5 8.5 14 9.5 14.5 11"/></svg>
+        </div>
+        <div>
+          <div class="skill-name">Gestão &amp; Liderança</div>
+          <div class="skill-tags">1:1, Feedback estruturado, Plano de desenvolvimento, Mentoria, Review de entregas</div>
+        </div>
+      </div>
+      <div class="exp-item reveal-right d5">
+        <div class="exp-logo" style="background:#7b2c2c;overflow:hidden;"><img src="assets/logo-essence.png" alt="Essence" style="width:100%;height:100%;object-fit:contain;display:block;" onerror="this.parentElement.innerHTML='<span style='font-size:11px;font-weight:700;color:#fff;'>E</span>'"></div>
+        <div>
+          <div class="exp-role">Sócia proprietária</div>
+          <div class="exp-company">Essence - Congelados saudáveis</div>
+          <div class="exp-period">2017 - 2019</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MIM -->
+<section class="about-section" id="sobre-mim">
+  <div class="wrap">
+    <h2 class="s-heading reveal">Sobre mim</h2>
+    <div class="about-grid">
+      <div class="about-photo reveal-left">
+        <img src="assets/foto-sobre-mim.png" alt="Laila Andrade" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:12px;">
+      </div>
+      <div class="reveal-right d1" style="align-self:start;">
+        <div class="about-name">Laila Andrade</div>
+        <p class="about-bio">Sou Product Designer com mais de 5 anos de experiência e atuação além da interface: Entro junto na identificação do problema, participo das decisões de produto e uso dados para direcionar o design para o que realmente move resultado.</p>
+        <p class="about-bio">Lidero um time de Product Designers, com responsabilidade sobre roadmap, QA e desenvolvimento de carreira. Parte relevante do meu trabalho acontece fora do Figma: Alinhamento com PMs e stakeholders, análise de métricas para embasar priorização, mas mantenho atuação hands-on nos cenários mais críticos.</p>
+        <p class="about-bio">Tenho familiaridade com todo o ciclo de produto (discovery, prototipação, testes, análise de métricas e iteração). Utilizo a IA buscando novas formas de otimizar e impulsionar o processo de validação de hipóteses e tomada de decisão.</p>
+        <p class="about-bio">Acredito no design como parte ativa da estratégia de produto, contribuindo para soluções relevantes que envolvam usuários e que sejam sustentáveis para o negócio.</p>
+        <a href="https://www.linkedin.com/in/lailaandrade/" target="_blank" rel="noopener" class="about-link">Meu linkedin &nbsp;→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONAMENTOS -->
+<section class="faq-section" id="questionamentos">
+  <div class="wrap">
+    <h2 class="s-heading reveal">Questionamentos</h2>
+    <div class="faq-grid reveal-scale">
+
+      <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-q">Como você aborda um novo problema de produto?</div>
+          <div class="faq-btn" aria-label="Expandir">+</div>
+        </div>
+        <div class="faq-a">Todo problema começa com uma fase de entendimento, mas sem se tornar custoso. Conecto dados de comportamento, dados estratégicos, e alinhamento com PM e engenharia para chegar rápido em uma hipótese sólida. A partir daí, testo e itero para validação e análise da solução.</div>
+      </div>
+
+      <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-q">Como dados entram no seu processo de design?</div>
+          <div class="faq-btn" aria-label="Expandir">+</div>
+        </div>
+        <div class="faq-a">Dados fazem parte do processo do começo ao fim. No início, uso para entender e direcionar, identificando onde focar. Durante o processo, testes reduzem o risco antes de apostar em uma solução maior. Depois da entrega, acompanho as métricas de perto para entender o impacto real e decidir o próximo passo. A ideia é sempre iterar com evidência.</div>
+      </div>
+
+      <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-q">O que te diferencia como designer?</div>
+          <div class="faq-btn" aria-label="Expandir">+</div>
+        </div>
+        <div class="faq-a">Trabalho no ponto de interseção entre experiência do usuário, estratégia de produto e resultado de negócio. O foco é sair de um problema para uma proposta concreta com agilidade, sem pular a etapa de entendimento, mas sem me apegar a frameworks. Atuando em marketplace com metas claras de conversão me ensinaram a calibrar quando vale aprofundar e quando vale testar logo para aprender com o dado real.</div>
+      </div>
+
+      <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-q">Como você incorpora IA no seu processo de design?</div>
+          <div class="faq-btn" aria-label="Expandir">+</div>
+        </div>
+        <div class="faq-a">Uso IA como acelerador de raciocínio e decisões. Na prática: Claude para estruturar hipóteses, sintetizar achados de research, dar review de copy e fluxos. ChatGPT e Gemini para benchmark rápido e geração de referências visuais. NotebookLM para organizar e cruzar fontes de research, como entrevistas, documentos, benchmarks. No geral, a IA me ajuda a passar por todo processo de design (quando necessário) com menos viés e mais agilidade e assertividade. O julgamento sobre o que vale explorar ainda é meu.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="reveal-left">
+        <div class="cta-title">Disponível para novos desafios e oportunidades.</div>
+        <p class="cta-sub">Se quiser conversar sobre produto, design ou uma oportunidade, é só me chamar.</p>
+      </div>
+      <div class="reveal-right d1">
+        <a href="mailto:andrade.laila@hotmail.com" class="cta-btn">
+          andrade.laila@hotmail.com &nbsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Laila Andrade</span>
+    <a href="https://www.linkedin.com/in/lailaandrade/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  /* ── Scroll progress bar ── */
+  const progressBar = document.getElementById('scroll-progress');
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('siteNav');
+
+  const onScroll = () => {
+    const scrolled = window.scrollY;
+    nav.classList.toggle('scrolled', scrolled > 56);
+    const max = document.body.scrollHeight - window.innerHeight;
+    progressBar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Scroll reveal via IntersectionObserver ── */
+  const revealClasses = ['reveal', 'reveal-left', 'reveal-right', 'reveal-scale'];
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .s-heading');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── FAQ accordion ── */
+  function toggleFaq(item) {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
