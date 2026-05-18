@@ -249,8 +249,6 @@
 <section class="cover">
   <div class="wrapper">
     <div class="cover-meta">
-      <span class="cover-tag">Product Design · Payments</span>
-      <div class="cover-divider"></div>
       <span class="cover-company">Quero Marketplaces · Qeevo</span>
       <div class="cover-divider"></div>
       <span class="cover-year">2024 — 2025</span>
@@ -287,18 +285,18 @@
       <p class="section-body" style="margin-top: 16px;">
         Com a aquisição de instituições próprias, o grupo criou a área de marcas, onde cada instituição vendia bolsas pelo seu próprio site com infraestrutura da empresa por baixo. Contudo, criar um checkout para cada produto não era escalável.
       </p>
-      <div class="highlight-box">
-        <p>A oportunidade era criar um <strong>checkout agnóstico e desacoplado</strong>, que funcionasse como o Stripe ou Hotmart: integrável via iframe ou SDK em qualquer produto, com identidade visual configurável por tenant.</p>
-      </div>
-    </div>
-    <div>
-      <div class="context-chips">
+      <div class="context-chips" style="margin-top: 24px; margin-bottom: 0;">
         <span class="chip">Payments</span>
         <span class="chip">White label</span>
         <span class="chip">Multi-tenant</span>
         <span class="chip">B2C</span>
         <span class="chip">SDK / iframe</span>
       </div>
+      <div class="highlight-box">
+        <p>A oportunidade era criar um <strong>checkout agnóstico e desacoplado</strong>, que funcionasse como o Stripe ou Hotmart: integrável via iframe ou SDK em qualquer produto, com identidade visual configurável por tenant.</p>
+      </div>
+    </div>
+    <div>
       <div style="background: var(--dark-card); border: 1px solid #252b3d; border-radius: 14px; padding: 28px;">
         <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 20px;">Problema central</div>
         <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -479,9 +477,6 @@
       </div>
     </div>
 
-    <div class="highlight-box">
-      <p>Além dos estados de sucesso, foram mapeados <strong>estados de erro por cartão independente</strong>: quando o cartão 1 é aprovado mas o cartão 2 é recusado, o usuário vê o banner de erro contextualizado no bloco do cartão afetado, sem perder os dados já preenchidos no cartão aprovado.</p>
-    </div>
   </div>
 </section>
 
@@ -489,6 +484,7 @@
 <section class="conclusion">
   <div class="wrapper">
     <div class="conclusion-inner">
+      <div class="section-label" style="justify-content: center; margin-bottom: 24px;">Conclusão</div>
       <p class="conclusion-quote">"Checkout escalável em produção para múltiplas marcas, com a mesma arquitetura."</p>
       <p class="conclusion-body">
         O Paystation foi concebido desde o início como infraestrutura, não como feature. Ao final do período coberto por este case, o checkout estava em produção e rodando para múltiplas marcas distintas, exatamente como planejado no início: identidades visuais diferentes, mesma arquitetura por baixo. O próximo passo natural é a substituição do checkout legado do marketplace principal pelo Paystation, o que representará a validação completa da hipótese de plataforma.
@@ -565,10 +561,10 @@
   .wrapper { padding: 0 20px; }
   nav > div { padding: 12px 20px !important; }
   nav > div > div:last-child { display: none !important; }
-  .cover { padding: 72px 0 48px; }
-  .cover-meta { flex-wrap: wrap; gap: 8px; }
+  .cover { padding: 48px 0 32px; }
+  .cover-meta { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .cover-title { font-size: clamp(28px, 7vw, 40px) !important; max-width: 100% !important; }
-  .cover-subtitle { font-size: 15px; max-width: 100%; }
+  .cover-subtitle { font-size: 15px; max-width: 100%; margin-bottom: 16px; }
   .section { padding: 56px 0; }
   .two-col { grid-template-columns: 1fr; gap: 28px; }
   .problema-grid { grid-template-columns: 1fr; gap: 24px; }

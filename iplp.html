@@ -274,10 +274,11 @@
     .wrapper { padding: 0 20px; }
     nav > div { padding: 12px 20px !important; }
     nav > div > div:last-child { display: none !important; }
-    .cover { padding: 72px 0 48px; }
-    .cover-meta { flex-wrap: wrap; gap: 8px; }
+    .cover { padding: 48px 0 32px; }
+    .cover-meta { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .cover-author { margin-bottom: 0; }
     .cover-title { font-size: clamp(28px, 7vw, 40px) !important; }
-    .cover-subtitle { font-size: 15px; max-width: 100%; }
+    .cover-subtitle { font-size: 15px; max-width: 100%; margin-bottom: 16px; }
     .cover-metrics { flex-wrap: wrap; width: 100%; }
     .cover-metric { padding: 16px 20px; flex: 1 1 40%; }
     .section { padding: 56px 0; }
@@ -316,8 +317,6 @@
 <section class="cover">
   <div class="wrapper">
     <div class="cover-meta">
-      <span class="cover-tag">UX / Product Design</span>
-      <div class="cover-divider"></div>
       <span class="cover-company">Marketplace de Educação · Qeevo</span>
       <div class="cover-divider"></div>
       <span class="cover-year">2025</span>
@@ -352,16 +351,16 @@
       <p class="section-body">
         O Quero Bolsa já tinha uma página de listagem de cursos por instituição. O problema: ela seguia o mesmo padrão visual de qualquer outra página do marketplace, sem identidade da IES, sem hierarquia diferenciada, sem aproveitamento da autoridade de marca que cada instituição parceira já tinha junto ao público.
       </p>
+      <div class="context-chips" style="margin-top: 24px; margin-bottom: 0;">
+        <span class="chip">Marketplace de educação</span>
+        <span class="chip">B2C</span>
+        <span class="chip">Alta intenção de compra</span>
+      </div>
       <div class="highlight-box">
         <p>Um dado externo reforçou a oportunidade: páginas branded usadas em outro produto da empresa apresentavam <strong>conversão 10% maior que o marketplace padrão</strong>. A lógica estava validada, faltava aplicar.</p>
       </div>
     </div>
     <div class="two-col-aside">
-      <div class="context-chips">
-        <span class="chip">Marketplace de educação</span>
-        <span class="chip">B2C</span>
-        <span class="chip">Alta intenção de compra</span>
-      </div>
       <div style="background: var(--dark-card); border: 1px solid #252b3d; border-radius: 14px; padding: 28px;">
         <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-bottom: 20px;">Antes da intervenção</div>
         <div class="negative-row">
@@ -528,6 +527,7 @@
 <section class="conclusion">
   <div class="wrapper">
     <div class="conclusion-inner">
+      <div class="section-label" style="justify-content: center; margin-bottom: 24px;">Conclusão</div>
       <p class="conclusion-quote">"Pequenas mudanças de arquitetura e identidade visual, quando fundamentadas em dados e hipótese clara, conseguem mover métricas de negócio de forma expressiva."</p>
       <p class="conclusion-body">
         A decisão de apostar em um card diferente do padrão do marketplace foi o maior risco do projeto, e também o que gerou o maior retorno. A expansão para outras IES confirmou que a solução era escalável, não pontual.

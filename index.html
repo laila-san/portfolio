@@ -21,7 +21,7 @@ body {
   overflow-x: hidden;
 }
 
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+.wrap { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
 
 
 /* ─── NAV ─── */
@@ -38,7 +38,7 @@ body {
   border-color: rgba(255,255,255,0.07);
 }
 .nav-inner {
-  max-width: 1160px; margin: 0 auto; padding: 18px 40px;
+  max-width: 1400px; margin: 0 auto; padding: 18px 48px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-brand {
@@ -114,7 +114,8 @@ body {
   margin-top: 0;
 }
 .case-card {
-  display: block; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
   background: #1e2330; border: 1px solid #252b3d;
   border-radius: 14px; overflow: hidden;
   transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease;
@@ -136,7 +137,7 @@ body {
   transition: transform 0.5s ease;
 }
 .case-card:hover .case-img img { transform: scale(1.02); }
-.case-body { padding: 18px 22px 22px; }
+.case-body { padding: 18px 22px 22px; flex: 1; display: flex; flex-direction: column; }
 .case-cat {
   font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
   text-transform: uppercase; color: #6E95FF; margin-bottom: 8px;
@@ -144,13 +145,13 @@ body {
 .case-desc { font-size: 17px; color: #b8bdd4; line-height: 1.6; }
 .case-foot {
   display: flex; align-items: center; justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: auto; padding-top: 16px;
 }
 .case-arrow {
-  width: 28px; height: 28px; border-radius: 50%;
+  width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid rgba(110,149,255,0.2);
   display: flex; align-items: center; justify-content: center;
-  color: #6E95FF; font-size: 13px; flex-shrink: 0;
+  color: #6E95FF; font-size: 15px; flex-shrink: 0;
   transition: background 0.2s, border-color 0.2s;
 }
 .case-card:hover .case-arrow {
@@ -267,7 +268,7 @@ body {
 /* ─── FOOTER ─── */
 .footer { border-top: 1px solid #1a1f2a; padding: 24px 0; }
 .footer-inner {
-  max-width: 1160px; margin: 0 auto; padding: 0 40px;
+  max-width: 1400px; margin: 0 auto; padding: 0 48px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .footer-copy { font-size: 13px; color: #6b7280; }
