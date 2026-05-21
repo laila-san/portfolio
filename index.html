@@ -21,6 +21,14 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(48,79,254,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
 
 .wrap { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
 
@@ -72,7 +80,64 @@ body {
 .hero {
   padding: 148px 0 88px;
   border-bottom: 1px solid #1a1f2a;
+  overflow: hidden;
 }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+.hero-right {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  perspective: 1200px;
+  transform: rotateY(-8deg) rotateX(4deg);
+  transform-style: preserve-3d;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.55s forwards;
+}
+.hero-mock {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #1e2330;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.hero-mock:hover {
+  transform: translateY(-6px) translateZ(12px);
+  box-shadow: 0 32px 64px rgba(48,79,254,0.18);
+}
+.hero-mock img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.hero-mock:nth-child(2) {
+  margin-top: 24px;
+}
+.hero-mock:nth-child(4) {
+  margin-top: 24px;
+}
+
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    display: none;
+  }
+}
+
 .hero-title {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(28px, 3.6vw, 46px);
@@ -126,6 +191,13 @@ body {
   border-color: rgba(110,149,255,0.35);
   transform: translateY(-4px);
   box-shadow: 0 20px 48px rgba(48,79,254,0.12);
+}
+.cases-grid:has(.case-card:hover) .case-card:not(:hover) {
+  opacity: 0.4;
+  transform: scale(0.99);
+}
+.cases-grid .case-card {
+  transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
 }
 .case-img {
   width: 100%; aspect-ratio: 16/10; overflow: hidden;
@@ -278,24 +350,28 @@ body {
 /* ─── SCROLL REVEAL ─── */
 .reveal {
   opacity: 0; transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(6px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
 .reveal-left {
   opacity: 0; transform: translateX(-24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(4px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal-left.in { opacity: 1; transform: translateX(0); }
+.reveal-left.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-right {
   opacity: 0; transform: translateX(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(4px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal-right.in { opacity: 1; transform: translateX(0); }
+.reveal-right.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-scale {
   opacity: 0; transform: scale(0.97);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  filter: blur(4px);
+  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
 }
-.reveal-scale.in { opacity: 1; transform: scale(1); }
+.reveal-scale.in { opacity: 1; transform: scale(1); filter: blur(0); }
 .d1 { transition-delay: 0.08s; }
 .d2 { transition-delay: 0.16s; }
 .d3 { transition-delay: 0.24s; }
@@ -373,9 +449,35 @@ body {
   .cta-section .reveal-right { text-align: center; }
   .footer-inner { padding: 0 20px; }
 }
+
+/* ─── CURSOR CUSTOM ─── */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 12px; height: 12px;
+  background: #6E95FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.4,0,0.2,1),
+              height 0.25s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.25s ease,
+              background 0.25s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+.cursor-dot.expanded {
+  width: 40px;
+  height: 40px;
+}
+@media (hover: none) {
+  .cursor-dot { display: none; }
+}
 </style>
 </head>
 <body>
+<div class="cursor-dot" id="cursorDot"></div>
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
@@ -396,13 +498,31 @@ body {
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
-    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;">
-        <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
-        <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
+          <div style="display:inline-flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
+            <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
+          </div>
+          <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+        </div>
       </div>
-      <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+      <div class="hero-right">
+        <div class="hero-mock">
+          <img src="assets/capa-case-iplp.png" alt="iPLP case" loading="eager">
+        </div>
+        <div class="hero-mock">
+          <img src="assets/capa-case-iespage.png" alt="IES Page case" loading="eager">
+        </div>
+        <div class="hero-mock">
+          <img src="assets/capa-case-card.png" alt="Card de Oferta case" loading="eager">
+        </div>
+        <div class="hero-mock">
+          <img src="assets/capa-case-paystation.png" alt="Paystation case" loading="eager">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -677,6 +797,21 @@ body {
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
+  }
+
+  /* ── Cursor customizado ── */
+  const cursorDot = document.getElementById('cursorDot');
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top  = e.clientY + 'px';
+    }, { passive: true });
+
+    const hoverTargets = document.querySelectorAll('a, button, .case-card, .faq-item, [role="button"]');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
+      el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+    });
   }
 </script>
 
