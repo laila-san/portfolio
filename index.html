@@ -21,6 +21,37 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+/* ─── GRAD ORBS ─── */
+.grad-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: orbIn 2s ease forwards;
+  filter: blur(80px);
+}
+.grad-orb-1 {
+  width: 640px; height: 640px;
+  top: -220px; left: -120px;
+  background: radial-gradient(circle, rgba(48,79,254,0.13) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+.grad-orb-2 {
+  width: 520px; height: 520px;
+  top: -80px; right: -100px;
+  background: radial-gradient(circle, rgba(110,149,255,0.09) 0%, transparent 70%);
+  animation-delay: 0.35s;
+}
+.grad-orb-3 {
+  width: 420px; height: 420px;
+  top: 280px; left: 42%;
+  background: radial-gradient(circle, rgba(48,79,254,0.07) 0%, transparent 70%);
+  animation-delay: 0.65s;
+}
+@keyframes orbIn {
+  to { opacity: 1; }
+}
 
 .wrap { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
 
@@ -72,7 +103,169 @@ body {
 .hero {
   padding: 148px 0 88px;
   border-bottom: 1px solid #1a1f2a;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 40px;
+  align-items: center;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── MOCK CARD CAROUSEL ─── */
+.mock-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #1e2330;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+  opacity: 0;
+  animation: fadeSlideRight 0.9s ease 0.55s forwards;
+}
+.mock-bar {
+  height: 36px;
+  background: #161b26;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+.mock-bar-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  opacity: 0.55;
+}
+.mock-bar-dot:nth-child(1) { background: #f87171; }
+.mock-bar-dot:nth-child(2) { background: #fbbf24; }
+.mock-bar-dot:nth-child(3) { background: #34d399; }
+.mock-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #13171f;
+}
+.mock-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  z-index: 1;
+}
+.mock-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.mock-slide.slide-active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+.mock-slide.slide-prev {
+  opacity: 0;
+  transform: translateX(-28px);
+  z-index: 1;
+}
+.mock-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(13,15,20,0.93) 0%, rgba(13,15,20,0.48) 45%, transparent 72%),
+    rgba(48,79,254,0.28);
+  z-index: 1;
+  pointer-events: none;
+}
+.mock-metric {
+  position: absolute;
+  left: 20px;
+  bottom: 22px;
+  z-index: 2;
+  pointer-events: none;
+}
+.mock-metric-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+}
+.mock-metric-desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.82);
+  margin-top: 5px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+.mock-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px 12px;
+  background: #161b26;
+}
+.mock-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.mock-year {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.mock-sep {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+.mock-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.62);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mock-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mock-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: none;
+}
+.mock-dot.active {
+  background: #6E95FF;
+  transform: scale(1.35);
+}
+
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .mock-card { display: none; }
+}
+
 .hero-title {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(28px, 3.6vw, 46px);
@@ -101,6 +294,10 @@ body {
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
 /* ─── SHARED SECTION HEADING ─── */
 .s-heading {
@@ -126,6 +323,13 @@ body {
   border-color: rgba(110,149,255,0.35);
   transform: translateY(-4px);
   box-shadow: 0 20px 48px rgba(48,79,254,0.12);
+}
+.cases-grid:has(.case-card:hover) .case-card:not(:hover) {
+  opacity: 0.4;
+  transform: scale(0.99);
+}
+.cases-grid .case-card {
+  transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
 }
 .case-img {
   width: 100%; aspect-ratio: 16/10; overflow: hidden;
@@ -278,24 +482,28 @@ body {
 /* ─── SCROLL REVEAL ─── */
 .reveal {
   opacity: 0; transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(6px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
 .reveal-left {
   opacity: 0; transform: translateX(-24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(4px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal-left.in { opacity: 1; transform: translateX(0); }
+.reveal-left.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-right {
   opacity: 0; transform: translateX(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  filter: blur(4px);
+  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
 }
-.reveal-right.in { opacity: 1; transform: translateX(0); }
+.reveal-right.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-scale {
   opacity: 0; transform: scale(0.97);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  filter: blur(4px);
+  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
 }
-.reveal-scale.in { opacity: 1; transform: scale(1); }
+.reveal-scale.in { opacity: 1; transform: scale(1); filter: blur(0); }
 .d1 { transition-delay: 0.08s; }
 .d2 { transition-delay: 0.16s; }
 .d3 { transition-delay: 0.24s; }
@@ -373,9 +581,37 @@ body {
   .cta-section .reveal-right { text-align: center; }
   .footer-inner { padding: 0 20px; }
 }
+
+/* ─── CURSOR CUSTOM ─── */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 12px; height: 12px;
+  background: #6E95FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.4,0,0.2,1),
+              height 0.25s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.25s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+.cursor-dot.expanded {
+  width: 40px;
+  height: 40px;
+}
+@media (hover: none) {
+  .cursor-dot { display: none; }
+}
 </style>
 </head>
 <body>
+<div class="grad-orb grad-orb-1"></div>
+<div class="grad-orb grad-orb-2"></div>
+<div class="grad-orb grad-orb-3"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div id="scroll-progress"></div>
 
 <!-- NAV -->
@@ -396,13 +632,74 @@ body {
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
-    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;">
-        <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
-        <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
+          <div style="display:inline-flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
+            <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
+          </div>
+          <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+        </div>
       </div>
-      <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+
+      <!-- Mock card carousel -->
+      <div class="mock-card" id="heroMock">
+        <div class="mock-bar">
+          <span class="mock-bar-dot"></span>
+          <span class="mock-bar-dot"></span>
+          <span class="mock-bar-dot"></span>
+        </div>
+        <div class="mock-img-wrap">
+          <div class="mock-slide slide-active" data-slide="0" data-year="2025" data-title="iPLP">
+            <img src="assets/capa-case-iplp.png" alt="iPLP" loading="eager">
+            <div class="mock-overlay"></div>
+            <div class="mock-metric">
+              <div class="mock-metric-num">+39,1%</div>
+              <div class="mock-metric-desc">taxa de matrícula</div>
+            </div>
+          </div>
+          <div class="mock-slide" data-slide="1" data-year="2025" data-title="IES Page">
+            <img src="assets/capa-case-iespage.png" alt="IES Page" loading="eager">
+            <div class="mock-overlay"></div>
+            <div class="mock-metric">
+              <div class="mock-metric-num">+76%</div>
+              <div class="mock-metric-desc">conversão YoY</div>
+            </div>
+          </div>
+          <div class="mock-slide" data-slide="2" data-year="2024" data-title="Card de Oferta">
+            <img src="assets/capa-case-card.png" alt="Card de Oferta" loading="eager">
+            <div class="mock-overlay"></div>
+            <div class="mock-metric">
+              <div class="mock-metric-num">+8%</div>
+              <div class="mock-metric-desc">avanço de funil</div>
+            </div>
+          </div>
+          <div class="mock-slide" data-slide="3" data-year="2024 – 2025" data-title="Paystation">
+            <img src="assets/capa-case-paystation.png" alt="Paystation" loading="eager">
+            <div class="mock-overlay"></div>
+            <div class="mock-metric">
+              <div class="mock-metric-num">4 IES</div>
+              <div class="mock-metric-desc">em produção no lançamento</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-footer">
+          <div class="mock-footer-left">
+            <span class="mock-year" id="mockYear">2025</span>
+            <span class="mock-sep">·</span>
+            <span class="mock-title" id="mockTitle">iPLP</span>
+          </div>
+          <div class="mock-dots">
+            <span class="mock-dot active" onclick="heroGoTo(0)"></span>
+            <span class="mock-dot" onclick="heroGoTo(1)"></span>
+            <span class="mock-dot" onclick="heroGoTo(2)"></span>
+            <span class="mock-dot" onclick="heroGoTo(3)"></span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -678,6 +975,61 @@ body {
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
+
+  /* ── Cursor customizado ── */
+  const cursorDot = document.getElementById('cursorDot');
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top  = e.clientY + 'px';
+    }, { passive: true });
+
+    const hoverTargets = document.querySelectorAll('a, button, .case-card, .faq-item, .mock-card, [role="button"]');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
+      el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
+    });
+  }
+
+  /* ── Hero carousel ── */
+  (function () {
+    const INTERVAL = 2800;
+    let current = 0;
+    let timer;
+
+    const slides  = document.querySelectorAll('.mock-slide');
+    const dots    = document.querySelectorAll('.mock-dot');
+    const card    = document.getElementById('heroMock');
+    const yearEl  = document.getElementById('mockYear');
+    const titleEl = document.getElementById('mockTitle');
+
+    if (!slides.length) return;
+
+    function goTo(idx) {
+      const prev = current;
+      current = ((idx % slides.length) + slides.length) % slides.length;
+      if (prev === current) return;
+      slides[prev].classList.remove('slide-active');
+      slides[prev].classList.add('slide-prev');
+      setTimeout(() => slides[prev] && slides[prev].classList.remove('slide-prev'), 600);
+      slides[current].classList.add('slide-active');
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      if (yearEl)  yearEl.textContent  = slides[current].dataset.year  || '';
+      if (titleEl) titleEl.textContent = slides[current].dataset.title || '';
+    }
+
+    window.heroGoTo = goTo;
+
+    function start() { timer = setInterval(() => goTo(current + 1), INTERVAL); }
+    function stop()  { clearInterval(timer); }
+
+    if (card) {
+      card.addEventListener('mouseenter', stop);
+      card.addEventListener('mouseleave', start);
+    }
+
+    start();
+  })();
 </script>
 
 </body>
