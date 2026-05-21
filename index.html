@@ -6,6 +6,7 @@
 <title>Laila Andrade — Product Designer</title>
 <link rel="icon" type="image/png" href="assets/foto-sobre-mim.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -173,7 +174,6 @@ body {
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; margin-top: 2px;
 }
-.skill-ic svg { width: 15px; height: 15px; stroke: #6E95FF; fill: none; stroke-width: 1.5; }
 .skill-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px; }
 .skill-tags { font-size: 13px; color: #b8bdd4; line-height: 1.55; }
 
@@ -370,6 +370,7 @@ body {
   .cta-inner { grid-template-columns: 1fr; gap: 24px; }
   .cta-title { font-size: clamp(22px, 6vw, 28px); }
   .cta-btn { white-space: normal; text-align: center; }
+  .cta-section .reveal-right { text-align: center; }
   .footer-inner { padding: 0 20px; }
 }
 </style>
@@ -396,8 +397,13 @@ body {
 <section class="hero">
   <div class="wrap">
     <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
-    <p class="hero-subtitle" style="max-width:none;">Product Designer na Qeevo — Marketplace de educação que já impactou 1.6 milhão de alunos.<br>Aberta a conversas sobre novas oportunidades.</p>
-    <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
+        <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
+      </div>
+      <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+    </div>
   </div>
 </section>
 
@@ -462,9 +468,7 @@ body {
 
       <!-- Row 1 -->
       <div class="skill-item reveal-left d1">
-        <div class="skill-ic">
-          <svg viewBox="0 0 16 16"><path d="M8 1L9.8 6H15L10.6 9.1L12.4 14L8 10.9L3.6 14L5.4 9.1L1 6H6.2Z"/></svg>
-        </div>
+        <div class="skill-ic"><i class="ph ph-compass" style="font-size:17px;color:#6E95FF;"></i></div>
         <div>
           <div class="skill-name">Produto &amp; Estratégia</div>
           <div class="skill-tags">Discovery, Roadmap, Definição de fluxos, Heurísticas, OKRs, Alinhamento stakeholders</div>
@@ -481,9 +485,7 @@ body {
 
       <!-- Row 2 -->
       <div class="skill-item reveal-left d2">
-        <div class="skill-ic">
-          <svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1"/><rect x="9" y="9" width="5.5" height="5.5" rx="1"/></svg>
-        </div>
+        <div class="skill-ic"><i class="ph ph-pen-nib" style="font-size:17px;color:#6E95FF;"></i></div>
         <div>
           <div class="skill-name">Design &amp; Prototipação</div>
           <div class="skill-tags">Figma (variáveis, auto layout, componentes, Design System, MCP)</div>
@@ -500,9 +502,7 @@ body {
 
       <!-- Row 3 -->
       <div class="skill-item reveal-left d3">
-        <div class="skill-ic">
-          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v4M8 11.5v.5"/></svg>
-        </div>
+        <div class="skill-ic"><i class="ph ph-robot" style="font-size:17px;color:#6E95FF;"></i></div>
         <div>
           <div class="skill-name">IA &amp; Automação</div>
           <div class="skill-tags">Claude (Anthropic), ChatGPT, NotebookLM, entre outros modelos - aplicados a research, reviews e geração de referências</div>
@@ -519,9 +519,7 @@ body {
 
       <!-- Row 4 -->
       <div class="skill-item reveal-left d4">
-        <div class="skill-ic">
-          <svg viewBox="0 0 16 16"><polyline points="1,12 4.5,7.5 7.5,9.5 11,4.5 14.5,6.5"/></svg>
-        </div>
+        <div class="skill-ic"><i class="ph ph-chart-line-up" style="font-size:17px;color:#6E95FF;"></i></div>
         <div>
           <div class="skill-name">Research &amp; Dados</div>
           <div class="skill-tags">Entrevistas com usuários, Surveys, Testes de usabilidade, Maze, Hotjar, Clarity, GA4, Metabase</div>
@@ -538,9 +536,7 @@ body {
 
       <!-- Row 5 -->
       <div class="skill-item reveal-left d5">
-        <div class="skill-ic">
-          <svg viewBox="0 0 16 16"><circle cx="8" cy="5.5" r="2.5"/><circle cx="3.5" cy="11" r="2"/><circle cx="12.5" cy="11" r="2"/><path d="M6 8C4.5 8.5 2 9.5 1.5 11M10 8C11.5 8.5 14 9.5 14.5 11"/></svg>
-        </div>
+        <div class="skill-ic"><i class="ph ph-users-three" style="font-size:17px;color:#6E95FF;"></i></div>
         <div>
           <div class="skill-name">Gestão &amp; Liderança</div>
           <div class="skill-tags">1:1, Feedback estruturado, Plano de desenvolvimento, Mentoria, Review de entregas</div>
@@ -590,7 +586,7 @@ body {
           <div class="faq-q">Como você aborda um novo problema de produto?</div>
           <div class="faq-btn" aria-label="Expandir">+</div>
         </div>
-        <div class="faq-a">Todo problema começa com uma fase de entendimento, mas sem se tornar custoso. Conecto dados de comportamento, dados estratégicos, e alinhamento com PM e engenharia para chegar rápido em uma hipótese sólida. A partir daí, testo e itero para validação e análise da solução.</div>
+        <div class="faq-a">Contexto rápido, hipótese documentada, alinhamento com PM antes de qualquer pixel. A fase de entendimento existe, mas não precisa ser longa. O dado já costuma apontar a direção. Depois disso, testo e itero com base no que volta.</div>
       </div>
 
       <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
@@ -598,7 +594,7 @@ body {
           <div class="faq-q">Como dados entram no seu processo de design?</div>
           <div class="faq-btn" aria-label="Expandir">+</div>
         </div>
-        <div class="faq-a">Dados fazem parte do processo do começo ao fim. No início, uso para entender e direcionar, identificando onde focar. Durante o processo, testes reduzem o risco antes de apostar em uma solução maior. Depois da entrega, acompanho as métricas de perto para entender o impacto real e decidir o próximo passo. A ideia é sempre iterar com evidência.</div>
+        <div class="faq-a">No início para direcionar, no meio para reduzir risco, depois da entrega para entender o impacto real. Não como ritual, como ferramenta de decisão. A diferença entre iterar com evidência e iterar no escuro é o que separa uma entrega de um resultado.</div>
       </div>
 
       <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
@@ -606,7 +602,7 @@ body {
           <div class="faq-q">O que te diferencia como designer?</div>
           <div class="faq-btn" aria-label="Expandir">+</div>
         </div>
-        <div class="faq-a">Trabalho no ponto de interseção entre experiência do usuário, estratégia de produto e resultado de negócio. O foco é sair de um problema para uma proposta concreta com agilidade, sem pular a etapa de entendimento, mas sem me apegar a frameworks. Atuando em marketplace com metas claras de conversão me ensinaram a calibrar quando vale aprofundar e quando vale testar logo para aprender com o dado real.</div>
+        <div class="faq-a">Sei calibrar quando vale aprofundar e quando vale testar logo. Anos em marketplace com metas de conversão afiaram esse julgamento. Não me apego a frameworks, me apego ao problema.</div>
       </div>
 
       <div class="faq-item" role="button" tabindex="0" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter')toggleFaq(this)">
@@ -614,7 +610,7 @@ body {
           <div class="faq-q">Como você incorpora IA no seu processo de design?</div>
           <div class="faq-btn" aria-label="Expandir">+</div>
         </div>
-        <div class="faq-a">Uso IA como acelerador de raciocínio e decisões. Na prática: Claude para estruturar hipóteses, sintetizar achados de research, dar review de copy e fluxos. ChatGPT e Gemini para benchmark rápido e geração de referências visuais. NotebookLM para organizar e cruzar fontes de research, como entrevistas, documentos, benchmarks. No geral, a IA me ajuda a passar por todo processo de design (quando necessário) com menos viés e mais agilidade e assertividade. O julgamento sobre o que vale explorar ainda é meu.</div>
+        <div class="faq-a">Como acelerador de raciocínio: Claude para hipóteses, review de copy e síntese de research. NotebookLM para cruzar fontes. ChatGPT para benchmark e referências visuais rápidas. O julgamento sobre o que vale explorar ainda é meu.</div>
       </div>
 
     </div>
@@ -631,7 +627,7 @@ body {
       </div>
       <div class="reveal-right d1">
         <a href="mailto:andrade.laila@hotmail.com" class="cta-btn">
-          andrade.laila@hotmail.com &nbsp;→
+          Entrar em contato &nbsp;→
         </a>
       </div>
     </div>
