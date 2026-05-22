@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -280,16 +280,50 @@ body {
   opacity: 0; transform: translateY(22px);
   animation: fadeUp 0.75s ease 0.28s forwards;
 }
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: fadeUp 0.75s ease 0.05s forwards;
+}
+.hero-status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.18);
+}
+.hero-status-text {
+  font-size: 13px;
+  color: #b8bdd4;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  opacity: 0;
+  animation: fadeUp 0.75s ease 0.46s forwards;
+}
 .hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 14px; font-weight: 500; color: #fff;
   border: 1px solid rgba(255,255,255,0.18);
   padding: 11px 22px; border-radius: 100px; text-decoration: none;
   transition: background 0.25s, border-color 0.25s;
-  opacity: 0; transform: translateY(22px);
-  animation: fadeUp 0.75s ease 0.46s forwards;
 }
 .hero-cta:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); }
+.hero-cta-li {
+  color: #6E95FF;
+  border-color: rgba(110,149,255,0.25);
+}
+.hero-cta-li:hover {
+  background: rgba(48,79,254,0.1);
+  border-color: rgba(110,149,255,0.45);
+}
 
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
@@ -605,6 +639,115 @@ body {
 @media (hover: none) {
   .cursor-dot { display: none; }
 }
+
+/* ─── THEME TOGGLE BUTTON ─── */
+.theme-toggle {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: transparent;
+  color: #b8bdd4;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 17px;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  padding: 0;
+}
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
+}
+
+/* ─── LIGHT THEME ─── */
+[data-theme="light"] body { background: #f5f6fb; color: #0d0f14; }
+
+[data-theme="light"] .grad-orb-1 { background: radial-gradient(circle, rgba(48,79,254,0.06) 0%, transparent 70%); }
+[data-theme="light"] .grad-orb-2 { background: radial-gradient(circle, rgba(110,149,255,0.04) 0%, transparent 70%); }
+[data-theme="light"] .grad-orb-3 { background: radial-gradient(circle, rgba(48,79,254,0.03) 0%, transparent 70%); }
+
+[data-theme="light"] .nav.scrolled { background: rgba(245,246,251,0.92); border-color: rgba(0,0,0,0.07); }
+[data-theme="light"] .nav-name { color: #0d0f14; }
+[data-theme="light"] .nav-link { color: #4a5168; }
+[data-theme="light"] .nav-link:hover { color: #0d0f14; }
+[data-theme="light"] .nav-cta { color: #304FFE; background: rgba(48,79,254,0.07); border-color: rgba(48,79,254,0.18); }
+[data-theme="light"] .nav-cta:hover { background: rgba(48,79,254,0.14); border-color: rgba(48,79,254,0.3); }
+[data-theme="light"] .theme-toggle { border-color: rgba(0,0,0,0.12); color: #4a5168; }
+[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); color: #0d0f14; border-color: rgba(0,0,0,0.2); }
+
+[data-theme="light"] .hero {
+  border-bottom-color: #e0e4f0;
+  background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(48,79,254,0.07) 0%, transparent 65%),
+              linear-gradient(180deg, rgba(232,236,255,0.45) 0%, transparent 55%);
+}
+[data-theme="light"] .hero-title { color: #0d0f14; }
+[data-theme="light"] .hero-status-text { color: #4a5168; }
+[data-theme="light"] .hero-cta { color: #fff; background: #304FFE; border-color: #304FFE; }
+[data-theme="light"] .hero-cta:hover { background: #2440e0; border-color: #2440e0; }
+[data-theme="light"] .hero-cta-li { color: #304FFE; background: transparent; border-color: rgba(48,79,254,0.28); }
+[data-theme="light"] .hero-cta-li:hover { background: rgba(48,79,254,0.07); border-color: rgba(48,79,254,0.45); color: #304FFE; }
+
+[data-theme="light"] .s-heading { color: #0d0f14; }
+
+[data-theme="light"] .cases { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .case-card { background: #ffffff; border-color: #e0e4f0; }
+[data-theme="light"] .case-card:hover { border-color: rgba(48,79,254,0.3); box-shadow: 0 20px 48px rgba(48,79,254,0.07); }
+[data-theme="light"] .case-img { background: #edf0f8; border-bottom-color: #e0e4f0; }
+[data-theme="light"] .case-cat { color: #304FFE; }
+[data-theme="light"] .case-desc { color: #4a5168; }
+[data-theme="light"] .case-arrow { color: #304FFE; border-color: rgba(48,79,254,0.2); }
+[data-theme="light"] .case-card:hover .case-arrow { background: rgba(48,79,254,0.1); border-color: rgba(48,79,254,0.4); }
+
+[data-theme="light"] .skills-section { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .skill-item { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .skill-item:first-of-type { border-top-color: #e0e4f0; }
+[data-theme="light"] .skill-ic { background: rgba(48,79,254,0.06); border-color: rgba(48,79,254,0.14); }
+[data-theme="light"] .skill-name { color: #0d0f14; }
+[data-theme="light"] .skill-tags { color: #4a5168; }
+[data-theme="light"] .exp-item { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .exp-item:first-of-type { border-top-color: #e0e4f0; }
+[data-theme="light"] .exp-role { color: #0d0f14; }
+[data-theme="light"] .exp-company { color: #4a5168; }
+[data-theme="light"] .exp-period { color: #8892aa; }
+[data-theme="light"] .skills-outer > *:nth-child(3),
+[data-theme="light"] .skills-outer > *:nth-child(4) { border-top-color: #e0e4f0; }
+
+[data-theme="light"] .about-section { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .about-photo { border-color: #e0e4f0; background: #edf0f8; }
+[data-theme="light"] .about-name { color: #0d0f14; }
+[data-theme="light"] .about-bio { color: #4a5168; }
+[data-theme="light"] .about-bio strong { color: #0d0f14; }
+[data-theme="light"] .about-link { color: #304FFE; }
+
+[data-theme="light"] .faq-section { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .faq-item { background: #ffffff; border-color: #e0e4f0; }
+[data-theme="light"] .faq-item:hover { background: #f7f8fd; border-color: #d5d9eb; }
+[data-theme="light"] .faq-q { color: #0d0f14; }
+[data-theme="light"] .faq-btn { border-color: rgba(0,0,0,0.1); color: #4a5168; }
+[data-theme="light"] .faq-a { color: #4a5168; }
+
+[data-theme="light"] .cta-title { color: #0d0f14; }
+[data-theme="light"] .cta-sub { color: #4a5168; }
+[data-theme="light"] .cta-btn { color: #0d0f14; border-color: rgba(0,0,0,0.16); }
+[data-theme="light"] .cta-btn:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.28); }
+
+[data-theme="light"] .footer { border-top-color: #e0e4f0; }
+[data-theme="light"] .footer-copy { color: #8892aa; }
+[data-theme="light"] .footer-link { color: #4a5168; }
+[data-theme="light"] .footer-link:hover { color: #0d0f14; }
+
+[data-theme="light"] .mock-card { background: #edf0f8; border-color: rgba(0,0,0,0.1); box-shadow: 0 24px 64px rgba(0,0,0,0.12); }
+[data-theme="light"] .mock-bar { background: #bec4d8; border-bottom-color: rgba(0,0,0,0.08); }
+[data-theme="light"] .mock-img-wrap { background: #c8cdde; }
+[data-theme="light"] .mock-footer { background: #bec4d8; }
+[data-theme="light"] .mock-year { color: rgba(0,0,0,0.32); }
+[data-theme="light"] .mock-sep { color: rgba(0,0,0,0.16); }
+[data-theme="light"] .mock-title { color: rgba(0,0,0,0.52); }
+[data-theme="light"] .mock-dot { background: rgba(0,0,0,0.15); }
+[data-theme="light"] .mock-dot.active { background: #304FFE; }
+
+[data-theme="light"] .cursor-dot { background: #304FFE; mix-blend-mode: normal; }
 </style>
 </head>
 <body>
@@ -624,6 +767,9 @@ body {
     <div class="nav-links">
       <a href="#cases" class="nav-link">Cases</a>
       <a href="#sobre" class="nav-link">Sobre</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+        <i class="ph ph-sun" id="themeIcon"></i>
+      </button>
       <a href="mailto:andrade.laila@hotmail.com" class="nav-cta">Entrar em contato</a>
     </div>
   </div>
@@ -634,13 +780,18 @@ body {
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-left">
+        <div class="hero-status">
+          <span class="hero-status-dot"></span>
+          <span class="hero-status-text">Disponível para novas oportunidades</span>
+        </div>
         <h1 class="hero-title">Product Designer focada em conectar experiência do usuário com impacto em negócio.</h1>
-        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:28px;">
-          <div style="display:inline-flex;align-items:center;gap:8px;">
-            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.18);"></span>
-            <span style="font-size:13px;color:#b8bdd4;font-weight:400;">Disponível para novas oportunidades</span>
-          </div>
-          <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">Entrar em contato &nbsp;→</a>
+        <div class="hero-actions">
+          <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">
+            <i class="ph ph-envelope"></i> Entrar em contato
+          </a>
+          <a href="https://www.linkedin.com/in/lailaandrade/" target="_blank" rel="noopener" class="hero-cta hero-cta-li">
+            <i class="ph ph-linkedin-logo"></i> LinkedIn
+          </a>
         </div>
       </div>
 
@@ -976,6 +1127,26 @@ body {
     if (!wasOpen) item.classList.add('open');
   }
 
+  /* ── Theme toggle ── */
+  (function () {
+    const toggle = document.getElementById('themeToggle');
+    const icon   = document.getElementById('themeIcon');
+
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('portfolio-theme', t);
+      icon.className = t === 'light' ? 'ph ph-moon' : 'ph ph-sun';
+    }
+
+    const saved = localStorage.getItem('portfolio-theme') || 'dark';
+    setTheme(saved);
+
+    toggle.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      setTheme(cur === 'light' ? 'dark' : 'light');
+    });
+  })();
+
   /* ── Cursor customizado ── */
   const cursorDot = document.getElementById('cursorDot');
   if (window.matchMedia('(hover: hover)').matches) {
@@ -984,7 +1155,7 @@ body {
       cursorDot.style.top  = e.clientY + 'px';
     }, { passive: true });
 
-    const hoverTargets = document.querySelectorAll('a, button, .case-card, .faq-item, .mock-card, [role="button"]');
+    const hoverTargets = document.querySelectorAll('a, button, .case-card, .faq-item, [role="button"]');
     hoverTargets.forEach(el => {
       el.addEventListener('mouseenter', () => cursorDot.classList.add('expanded'));
       el.addEventListener('mouseleave', () => cursorDot.classList.remove('expanded'));
@@ -1021,12 +1192,6 @@ body {
     window.heroGoTo = goTo;
 
     function start() { timer = setInterval(() => goTo(current + 1), INTERVAL); }
-    function stop()  { clearInterval(timer); }
-
-    if (card) {
-      card.addEventListener('mouseenter', stop);
-      card.addEventListener('mouseleave', start);
-    }
 
     start();
   })();

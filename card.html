@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Card de Oferta · Laila Andrade</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -232,6 +233,101 @@
     .cfn-inner { padding: 0 20px !important; }
     .cfn-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
   }
+
+
+/* ── Catch-all: inline color:#b8bdd4 / #c4c9e0 hardcoded no HTML ── */
+[data-theme="light"] [style*="color: #b8bdd4"],
+[data-theme="light"] [style*="color:#b8bdd4"] { color: #4a5168 !important; }
+[data-theme="light"] [style*="color: #c4c9e0"],
+[data-theme="light"] [style*="color:#c4c9e0"] { color: #4a5168 !important; }
+/* ── Classes específicas por arquivo ── */
+[data-theme="light"] .cover-subtitle { color: #4a5168 !important; }
+[data-theme="light"] .pillar-title { color: #0d0f14; }
+[data-theme="light"] .pillar-body { color: #4a5168; }
+[data-theme="light"] .evolution-card-title { color: #0d0f14; }
+[data-theme="light"] .evolution-card-desc { color: #4a5168; }
+[data-theme="light"] .evolution-card-desc strong { color: #0d0f14; }
+[data-theme="light"] .problem-item-text { color: #4a5168; }
+[data-theme="light"] .conclusion-quote { color: #0d0f14; }
+/* ── Nav back link ── */
+[data-theme="light"] nav > div > a { color: #4a5168 !important; }
+[data-theme="light"] nav > div > a:hover { color: #0d0f14 !important; }
+/* ── Inline #fff em conteúdo (não nav) ── */
+[data-theme="light"] .section [style*="color: #fff"],
+[data-theme="light"] .section [style*="color:#fff"],
+[data-theme="light"] .cover [style*="color: #fff"],
+[data-theme="light"] .cover [style*="color:#fff"] { color: #0d0f14 !important; }
+[data-theme="light"] .section [style*="color: white"],
+[data-theme="light"] .section [style*="color:white"] { color: #0d0f14 !important; }
+/* ── Metric/data values mantém cor da brand ── */
+[data-theme="light"] .cover-metric-value,
+[data-theme="light"] .metric-value { color: var(--brand-blue); }
+
+/* ─── THEME TOGGLE ─── */
+.case-theme-toggle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: transparent;
+  color: #b8bdd4;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 16px; padding: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.case-theme-toggle:hover { background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.22); }
+
+/* ─── LIGHT THEME ─── */
+[data-theme="light"] {
+  --dark: #f5f6fb;
+  --dark-2: #edf0f8;
+  --dark-3: #e4e8f4;
+  --dark-card: #ffffff;
+  --white: #0d0f14;
+  --muted: #4a5168;
+  --subtle: #8892aa;
+}
+[data-theme="light"] body { background: var(--dark); color: var(--white); }
+[data-theme="light"] nav { background: rgba(245,246,251,0.96) !important; border-bottom-color: rgba(0,0,0,0.07) !important; }
+[data-theme="light"] nav span[style*="color:#fff"] { color: #0d0f14 !important; }
+[data-theme="light"] .case-theme-toggle { border-color: rgba(0,0,0,0.12) !important; color: #4a5168 !important; }
+[data-theme="light"] .case-theme-toggle:hover { background: rgba(0,0,0,0.05) !important; color: #0d0f14 !important; }
+[data-theme="light"] .cover { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .cover::before { opacity: 0.3; }
+[data-theme="light"] .cover-subtitle { color: #4a5168; }
+[data-theme="light"] .cover-metrics { border-color: #e0e4f0; }
+[data-theme="light"] .cover-metric { border-right-color: #e0e4f0; }
+[data-theme="light"] .section { border-bottom-color: #e0e4f0; }
+[data-theme="light"] .section-body { color: #4a5168; }
+[data-theme="light"] .section-body strong { color: #0d0f14; }
+[data-theme="light"] .highlight-box { background: #f0f3fc; border-color: #d5daf0; }
+[data-theme="light"] .highlight-box p { color: #4a5168; }
+[data-theme="light"] .highlight-box strong { color: #0d0f14; }
+[data-theme="light"] .decision-box { background: rgba(48,79,254,0.05); border-color: rgba(48,79,254,0.15); }
+[data-theme="light"] .decision-body { color: #4a5168; }
+[data-theme="light"] .decision-body strong { color: #0d0f14; }
+[data-theme="light"] .step::before { background: linear-gradient(to bottom, #c4cbe0, transparent); }
+[data-theme="light"] .step-num { border-color: #c4cbe0; background: #fff; }
+[data-theme="light"] .step-body { color: #4a5168; }
+[data-theme="light"] .step-body strong { color: #0d0f14; }
+[data-theme="light"] .image-full { background: #edf0f8; border-color: #e0e4f0; }
+[data-theme="light"] .image-caption { color: #8892aa; border-top-color: #e0e4f0; }
+[data-theme="light"] .metric-card { border-color: #e0e4f0; }
+[data-theme="light"] .chip { background: #e4e8f4; border-color: #d0d5e8; }
+[data-theme="light"] .conclusion { border-top-color: #e0e4f0; }
+[data-theme="light"] .conclusion-body { color: #4a5168; }
+[data-theme="light"] .footer-links { border-top-color: #e0e4f0; }
+[data-theme="light"] .footer-link { color: #4a5168; }
+[data-theme="light"] .footer-link.primary { color: #304FFE; background: rgba(48,79,254,0.08); border-color: rgba(48,79,254,0.2); }
+[data-theme="light"] .case-footer-nav { background: #edf0f8; border-top-color: #e0e4f0; }
+[data-theme="light"] .case-footer-nav .cfn-card { background: #fff; border-color: #e0e4f0; }
+[data-theme="light"] .case-footer-nav .cfn-card:hover { border-color: rgba(48,79,254,0.3); }
+[data-theme="light"] .case-footer-nav .cfn-title { color: #0d0f14; }
+[data-theme="light"] .case-footer-nav .cfn-back { color: #4a5168; }
+[data-theme="light"] .case-footer-nav .cfn-back:hover { color: #0d0f14 !important; }
+[data-theme="light"] .neg-chip { background: rgba(255,77,77,0.06); }
+[data-theme="light"] .section-label { color: var(--brand-blue-light); }
+[data-theme="light"] .cover-tag { color: var(--brand-blue-light); background: rgba(48,79,254,0.08); border-color: rgba(48,79,254,0.18); }
 </style>
 </head>
 <body>
@@ -242,6 +338,10 @@
       Laila Andrade
     </a>
     <div style="display:flex;align-items:center;gap:24px;">
+      <button id="themeToggle" class="case-theme-toggle" aria-label="Alternar tema claro/escuro">
+        <i class="ph ph-sun" id="themeIcon"></i>
+      </button>
+      
       <a href="iplp.html" style="font-family:'DM Sans',sans-serif;font-size:13px;color:#6b7280;text-decoration:none;" onmouseover="this.style.color='#b8bdd4'" onmouseout="this.style.color='#6b7280'">iPLP</a>
       <a href="ies.html" style="font-family:'DM Sans',sans-serif;font-size:13px;color:#6b7280;text-decoration:none;" onmouseover="this.style.color='#b8bdd4'" onmouseout="this.style.color='#6b7280'">IES Page</a>
       <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#fff;font-weight:500;">Card de Oferta</span>
@@ -570,5 +670,24 @@
   </div>
 </section>
 
+<script>
+/* Theme persistence */
+(function(){
+  var html = document.documentElement;
+  var saved = localStorage.getItem('portfolio-theme') || 'dark';
+  html.setAttribute('data-theme', saved);
+  var icon = document.getElementById('themeIcon');
+  if(icon) icon.className = saved === 'light' ? 'ph ph-moon' : 'ph ph-sun';
+  var btn = document.getElementById('themeToggle');
+  if(btn) btn.addEventListener('click', function(){
+    var cur = html.getAttribute('data-theme');
+    var next = cur === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('portfolio-theme', next);
+    var ic = document.getElementById('themeIcon');
+    if(ic) ic.className = next === 'light' ? 'ph ph-moon' : 'ph ph-sun';
+  });
+})();
+</script>
 </body>
 </html>
