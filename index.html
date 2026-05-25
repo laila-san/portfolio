@@ -21,6 +21,12 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+/* ─── EASING TOKENS ─── */
+:root {
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+}
 /* ─── GRAD ORBS ─── */
 .grad-orb {
   position: fixed;
@@ -28,7 +34,7 @@ body {
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  animation: orbIn 2s ease forwards;
+  animation: orbIn 2s var(--ease-out-expo) forwards;
   filter: blur(80px);
 }
 .grad-orb-1 {
@@ -60,7 +66,7 @@ body {
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   padding: 0;
-  transition: background 0.4s ease, border-color 0.4s ease;
+  transition: background 0.4s var(--ease-out-quart), border-color 0.4s var(--ease-out-quart);
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
@@ -127,7 +133,7 @@ body {
   background: #1e2330;
   box-shadow: 0 24px 64px rgba(0,0,0,0.55);
   opacity: 0;
-  animation: fadeSlideRight 0.9s ease 0.55s forwards;
+  animation: fadeSlideRight 0.9s var(--ease-out-expo) 0.55s forwards;
 }
 .mock-bar {
   height: 36px;
@@ -159,7 +165,7 @@ body {
   inset: 0;
   opacity: 0;
   transform: translateX(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition: opacity 0.5s var(--ease-out-quart), transform 0.55s var(--ease-out-expo);
   z-index: 1;
 }
 .mock-slide img {
@@ -272,13 +278,13 @@ body {
   font-weight: 400; line-height: 1.14; letter-spacing: -0.02em;
   color: #fff; max-width: 680px; margin-bottom: 18px;
   opacity: 0; transform: translateY(22px);
-  animation: fadeUp 0.75s ease 0.1s forwards;
+  animation: fadeUp 0.75s var(--ease-out-expo) 0.1s forwards;
 }
 .hero-subtitle {
   font-size: 15px; font-weight: 400; color: #b8bdd4;
   max-width: 440px; line-height: 1.7; margin-bottom: 36px;
   opacity: 0; transform: translateY(22px);
-  animation: fadeUp 0.75s ease 0.28s forwards;
+  animation: fadeUp 0.75s var(--ease-out-expo) 0.28s forwards;
 }
 .hero-status {
   display: inline-flex;
@@ -286,7 +292,7 @@ body {
   gap: 8px;
   margin-bottom: 22px;
   opacity: 0;
-  animation: fadeUp 0.75s ease 0.05s forwards;
+  animation: fadeUp 0.75s var(--ease-out-expo) 0.05s forwards;
 }
 .hero-status-dot {
   width: 8px; height: 8px;
@@ -306,7 +312,7 @@ body {
   flex-wrap: wrap;
   margin-top: 32px;
   opacity: 0;
-  animation: fadeUp 0.75s ease 0.46s forwards;
+  animation: fadeUp 0.75s var(--ease-out-expo) 0.46s forwards;
 }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
@@ -350,7 +356,7 @@ body {
   text-decoration: none; color: inherit;
   background: #1e2330; border: 1px solid #252b3d;
   border-radius: 14px; overflow: hidden;
-  transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  transition: border-color 0.3s var(--ease-out-quart), transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-quart);
   cursor: pointer;
 }
 .case-card:hover {
@@ -363,7 +369,7 @@ body {
   transform: scale(0.99);
 }
 .cases-grid .case-card {
-  transition: border-color 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
+  transition: border-color 0.3s var(--ease-out-quart), transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-quart), opacity 0.3s var(--ease-out-quart);
 }
 .case-img {
   width: 100%; aspect-ratio: 16/10; overflow: hidden;
@@ -373,7 +379,7 @@ body {
 .case-img img {
   width: 100%; height: 100%; object-fit: cover; object-position: top;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.55s var(--ease-out-expo);
 }
 .case-card:hover .case-img img { transform: scale(1.02); }
 .case-body { padding: 18px 22px 22px; flex: 1; display: flex; flex-direction: column; }
@@ -517,25 +523,25 @@ body {
 .reveal {
   opacity: 0; transform: translateY(28px);
   filter: blur(6px);
-  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo), filter 0.7s var(--ease-out-quart);
 }
 .reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
 .reveal-left {
   opacity: 0; transform: translateX(-24px);
   filter: blur(4px);
-  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo), filter 0.7s var(--ease-out-quart);
 }
 .reveal-left.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-right {
   opacity: 0; transform: translateX(24px);
   filter: blur(4px);
-  transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease;
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo), filter 0.7s var(--ease-out-quart);
 }
 .reveal-right.in { opacity: 1; transform: translateX(0); filter: blur(0); }
 .reveal-scale {
   opacity: 0; transform: scale(0.97);
   filter: blur(4px);
-  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo), filter 0.7s var(--ease-out-quart);
 }
 .reveal-scale.in { opacity: 1; transform: scale(1); filter: blur(0); }
 .d1 { transition-delay: 0.08s; }
@@ -748,6 +754,15 @@ body {
 [data-theme="light"] .mock-dot.active { background: #304FFE; }
 
 [data-theme="light"] .cursor-dot { background: #304FFE; mix-blend-mode: normal; }
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 </style>
 </head>
 <body>
