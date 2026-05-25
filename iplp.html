@@ -135,8 +135,7 @@
 
   /* highlight */
   .highlight-box {
-    background: var(--dark-card); border: 1px solid #252b3d;
-    border-left: 3px solid var(--brand-blue);
+    background: rgba(48,79,254,0.06); border: 1px solid rgba(48,79,254,0.2);
     border-radius: 12px; padding: 24px 28px; margin-top: 28px; max-width: 960px;
   }
   .highlight-box p { font-size: 16px; color: #b8bdd4; line-height: 1.75; }
@@ -267,14 +266,17 @@
     text-decoration: none; letter-spacing: 0.04em;
   }
   .footer-link.primary {
-    color: var(--brand-blue-light); background: rgba(48,79,254,0.1);
-    border: 1px solid rgba(110,149,255,0.2); padding: 8px 20px; border-radius: 100px;
+    color: #fff; background: var(--brand-blue);
+    border: 1px solid var(--brand-blue); padding: 10px 24px; border-radius: 100px;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .footer-link.primary:hover { background: #2440e0; border-color: #2440e0; }
 
   @media (max-width: 768px) {
     .wrapper { padding: 0 20px; }
     nav > div { padding: 12px 20px !important; }
-    nav > div > div:last-child { display: none !important; }
+    nav > div > div:last-child > a,
+    nav > div > div:last-child > span { display: none !important; }
     .cover { padding: 48px 0 32px; }
     .cover-meta { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
     .cover-author { margin-bottom: 0; }
@@ -372,15 +374,16 @@
 [data-theme="light"] .step-num { border-color: #c4cbe0; background: #fff; }
 [data-theme="light"] .step-body { color: #4a5168; }
 [data-theme="light"] .step-body strong { color: #0d0f14; }
-[data-theme="light"] .image-full { background: #edf0f8; border-color: #e0e4f0; }
-[data-theme="light"] .image-caption { color: #8892aa; border-top-color: #e0e4f0; }
+[data-theme="light"] .image-full { background: #ffffff; border-color: #c8cedf; }
+[data-theme="light"] .image-caption { color: #6b7280; border-top-color: #dde1ee; }
+[data-theme="light"] [style*="border: 1px solid #252b3d"] { border-color: #d0d5e8 !important; }
 [data-theme="light"] .metric-card { border-color: #e0e4f0; }
 [data-theme="light"] .chip { background: #e4e8f4; border-color: #d0d5e8; }
 [data-theme="light"] .conclusion { border-top-color: #e0e4f0; }
 [data-theme="light"] .conclusion-body { color: #4a5168; }
 [data-theme="light"] .footer-links { border-top-color: #e0e4f0; }
 [data-theme="light"] .footer-link { color: #4a5168; }
-[data-theme="light"] .footer-link.primary { color: #304FFE; background: rgba(48,79,254,0.08); border-color: rgba(48,79,254,0.2); }
+[data-theme="light"] .footer-link.primary { color: #fff; background: #304FFE; border-color: #304FFE; }
 [data-theme="light"] .case-footer-nav { background: #edf0f8; border-top-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card { background: #fff; border-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card:hover { border-color: rgba(48,79,254,0.3); }
@@ -480,7 +483,6 @@
   <div class="wrapper">
     <div class="problema-grid">
       <div>
-        <div class="section-label">Problema / Oportunidade</div>
         <h2 class="section-title">80% das ordens migravam para fora do ecossistema</h2>
         <p class="section-body">
           O dado que tornava isso urgente: <strong>80% das ordens que engajavam nas comunicações migravam para fora do Quero Bolsa</strong>. O usuário clicava, chegava à página da IES no marketplace e saía para o site da própria instituição para fechar a matrícula.
@@ -502,7 +504,6 @@
 <!-- PROCESSO -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Processo</div>
     <h2 class="section-title">Discovery estruturado antes de qualquer pixel</h2>
     <p class="section-body">
       Com dados de conversão mostrando queda consistente no funil, estruturei o discovery com objetivo claro, hipótese documentada e métricas de sucesso definidas antes de qualquer proposta visual, garantindo alinhamento com produto, negócio e engenharia desde o início.
@@ -550,7 +551,6 @@
 <!-- ANTES E DEPOIS -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Antes e Depois</div>
     <h2 class="section-title">Da página genérica à vitrine branded</h2>
     <p class="section-body">
       O hero e os cards da listagem foram os dois pontos de maior impacto. Abaixo, a comparação entre a experiência anterior e a solução implementada.
@@ -566,7 +566,6 @@
 <section class="section">
   <div class="wrapper two-col">
     <div>
-      <div class="section-label">Decisão central</div>
       <h2 class="section-title">O maior risco foi também o maior diferencial</h2>
       <p class="section-body">
         Mudar o card da listagem para um modelo com identidade da IES foi a decisão mais arriscada. O card padrão funcionava para o marketplace como um todo. Introduzir uma exceção intencional em uma página de alto tráfego era um risco real.
@@ -632,6 +631,10 @@
       <p class="conclusion-body">
         Uma queda de 9,7% em ordens virou +10,6%. Um card fora do padrão do marketplace, sustentado por dados e hipótese clara, foi o que mudou a direção. A expansão para outras IES confirmou que a solução tinha escala, não era um caso isolado. O aprendizado que fica: contexto de marca importa para conversão, e dados de comportamento são o argumento certo pra convencer produto a aceitar o risco.
       </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">← Voltar ao portfólio</a>
+        <a href="ies.html" class="footer-link primary">Próximo case: IES Page →</a>
+      </div>
       </div>
 </div>
 </section>

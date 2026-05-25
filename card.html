@@ -110,8 +110,7 @@
 
   /* highlight */
   .highlight-box {
-    background: var(--dark-card); border: 1px solid #252b3d;
-    border-left: 3px solid var(--brand-blue);
+    background: rgba(48,79,254,0.06); border: 1px solid rgba(48,79,254,0.2);
     border-radius: 12px; padding: 24px 28px; margin-top: 28px; max-width: 960px;
   }
   .highlight-box p { font-size: 16px; color: #b8bdd4; line-height: 1.75; }
@@ -210,12 +209,28 @@
     font-size: clamp(22px, 2.5vw, 30px); font-weight: 400; line-height: 1.4;
     color: var(--white); margin-bottom: 24px;
   }
-  .conclusion-body { font-size: 17px; color: #b8bdd4; line-height: 1.8; }
+  .conclusion-body { font-size: 17px; color: #b8bdd4; line-height: 1.8; margin-bottom: 48px; }
+
+  .footer-links {
+    display: flex; align-items: center; justify-content: center; gap: 32px;
+    padding-top: 40px; border-top: 1px solid #1e2438;
+  }
+  .footer-link {
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .footer-link.primary {
+    color: #fff; background: var(--brand-blue);
+    border: 1px solid var(--brand-blue); padding: 10px 24px; border-radius: 100px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .footer-link.primary:hover { background: #2440e0; border-color: #2440e0; }
 
   @media (max-width: 768px) {
     .wrapper { padding: 0 20px; }
     nav > div { padding: 12px 20px !important; }
-    nav > div > div:last-child { display: none !important; }
+    nav > div > div:last-child > a,
+    nav > div > div:last-child > span { display: none !important; }
     .cover { padding: 48px 0 32px; }
     .cover-meta { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
     .cover-title { font-size: clamp(28px, 7vw, 40px) !important; }
@@ -310,15 +325,16 @@
 [data-theme="light"] .step-num { border-color: #c4cbe0; background: #fff; }
 [data-theme="light"] .step-body { color: #4a5168; }
 [data-theme="light"] .step-body strong { color: #0d0f14; }
-[data-theme="light"] .image-full { background: #edf0f8; border-color: #e0e4f0; }
-[data-theme="light"] .image-caption { color: #8892aa; border-top-color: #e0e4f0; }
+[data-theme="light"] .image-full { background: #ffffff; border-color: #c8cedf; }
+[data-theme="light"] .image-caption { color: #6b7280; border-top-color: #dde1ee; }
+[data-theme="light"] [style*="border: 1px solid #252b3d"] { border-color: #d0d5e8 !important; }
 [data-theme="light"] .metric-card { border-color: #e0e4f0; }
 [data-theme="light"] .chip { background: #e4e8f4; border-color: #d0d5e8; }
 [data-theme="light"] .conclusion { border-top-color: #e0e4f0; }
 [data-theme="light"] .conclusion-body { color: #4a5168; }
 [data-theme="light"] .footer-links { border-top-color: #e0e4f0; }
 [data-theme="light"] .footer-link { color: #4a5168; }
-[data-theme="light"] .footer-link.primary { color: #304FFE; background: rgba(48,79,254,0.08); border-color: rgba(48,79,254,0.2); }
+[data-theme="light"] .footer-link.primary { color: #fff; background: #304FFE; border-color: #304FFE; }
 [data-theme="light"] .case-footer-nav { background: #edf0f8; border-top-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card { background: #fff; border-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card:hover { border-color: rgba(48,79,254,0.3); }
@@ -415,7 +431,6 @@
   <div class="wrapper">
     <div class="problema-grid">
       <div>
-        <div class="section-label">Problema / Oportunidade</div>
         <h2 class="section-title">Dois ângulos simultâneos: experiência e custo operacional</h2>
         <p class="section-body">
           O problema tinha duas dimensões que se reforçavam. Do lado do usuário: <strong>70% não conseguiam identificar as informações relevantes para a decisão de compra</strong>, perdendo confiança e gerando bounce no funil.
@@ -437,7 +452,6 @@
 <!-- PROCESSO -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Processo</div>
     <h2 class="section-title">Pesquisa com usuários, benchmark e dois testes A/B antes de decidir</h2>
     <p class="section-body">
       O ponto de partida foram dados de comportamento coletados via plataformas de observabilidade, somados ao custo crescente de manutenção. Antes de definir qualquer solução final, conduzi pesquisa qualitativa e rodei dois testes A/B para validar as hipóteses com dados reais.
@@ -492,7 +506,6 @@
 <!-- ANTES E DEPOIS -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Antes e Depois</div>
     <h2 class="section-title">Das seis variações ao componente único</h2>
     <p class="section-body">
       Abaixo, as variações de card existentes antes da unificação e o novo card padrão aplicado em contexto de marketplace, com hierarquia de informação focada na decisão do usuário.
@@ -512,7 +525,6 @@
 <section class="section">
   <div class="wrapper two-col">
     <div>
-      <div class="section-label">Decisão central</div>
       <h2 class="section-title">Um card para todas as páginas — e por que isso era uma aposta</h2>
       <p class="section-body">
         Definir um card único para todo o marketplace era uma decisão sistêmica com implicações diretas em engenharia e produto. Qualquer mudança futura no componente se propagaria para todas as páginas ao mesmo tempo, o que reduzia custo mas também amplificava o risco de regressão.
@@ -578,6 +590,10 @@
       <p class="conclusion-body">
         O resultado duplo, +8% no funil e eliminação de custo de manutenção, veio de um processo que começou com dado de comportamento, passou por teste de usabilidade e dois A/Bs antes de qualquer decisão final de design. O que o case deixou claro: quando a hipótese está bem documentada e os dados sustentam a decisão, fica mais fácil convencer produto e engenharia a aceitar uma mudança sistêmica.
       </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">← Voltar ao portfólio</a>
+        <a href="paystation.html" class="footer-link primary">Próximo case: Paystation →</a>
+      </div>
     </div>
   </div>
 </section>

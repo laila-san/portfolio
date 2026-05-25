@@ -111,8 +111,7 @@
 
   /* highlight */
   .highlight-box {
-    background: var(--dark-card); border: 1px solid #252b3d;
-    border-left: 3px solid var(--brand-blue);
+    background: rgba(48,79,254,0.06); border: 1px solid rgba(48,79,254,0.2);
     border-radius: 12px; padding: 24px 28px; margin-top: 28px; max-width: 960px;
   }
   .highlight-box p { font-size: 16px; color: #b8bdd4; line-height: 1.75; }
@@ -227,14 +226,17 @@
     text-decoration: none; letter-spacing: 0.04em;
   }
   .footer-link.primary {
-    color: var(--brand-blue-light); background: rgba(48,79,254,0.1);
-    border: 1px solid rgba(110,149,255,0.2); padding: 8px 20px; border-radius: 100px;
+    color: #fff; background: var(--brand-blue);
+    border: 1px solid var(--brand-blue); padding: 10px 24px; border-radius: 100px;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .footer-link.primary:hover { background: #2440e0; border-color: #2440e0; }
 
   @media (max-width: 768px) {
     .wrapper { padding: 0 20px; }
     nav > div { padding: 12px 20px !important; }
-    nav > div > div:last-child { display: none !important; }
+    nav > div > div:last-child > a,
+    nav > div > div:last-child > span { display: none !important; }
     .cover { padding: 48px 0 32px; }
     .cover-meta { flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
     .cover-title { font-size: clamp(28px, 7vw, 40px) !important; }
@@ -329,15 +331,16 @@
 [data-theme="light"] .step-num { border-color: #c4cbe0; background: #fff; }
 [data-theme="light"] .step-body { color: #4a5168; }
 [data-theme="light"] .step-body strong { color: #0d0f14; }
-[data-theme="light"] .image-full { background: #edf0f8; border-color: #e0e4f0; }
-[data-theme="light"] .image-caption { color: #8892aa; border-top-color: #e0e4f0; }
+[data-theme="light"] .image-full { background: #ffffff; border-color: #c8cedf; }
+[data-theme="light"] .image-caption { color: #6b7280; border-top-color: #dde1ee; }
+[data-theme="light"] [style*="border: 1px solid #252b3d"] { border-color: #d0d5e8 !important; }
 [data-theme="light"] .metric-card { border-color: #e0e4f0; }
 [data-theme="light"] .chip { background: #e4e8f4; border-color: #d0d5e8; }
 [data-theme="light"] .conclusion { border-top-color: #e0e4f0; }
 [data-theme="light"] .conclusion-body { color: #4a5168; }
 [data-theme="light"] .footer-links { border-top-color: #e0e4f0; }
 [data-theme="light"] .footer-link { color: #4a5168; }
-[data-theme="light"] .footer-link.primary { color: #304FFE; background: rgba(48,79,254,0.08); border-color: rgba(48,79,254,0.2); }
+[data-theme="light"] .footer-link.primary { color: #fff; background: #304FFE; border-color: #304FFE; }
 [data-theme="light"] .case-footer-nav { background: #edf0f8; border-top-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card { background: #fff; border-color: #e0e4f0; }
 [data-theme="light"] .case-footer-nav .cfn-card:hover { border-color: rgba(48,79,254,0.3); }
@@ -438,7 +441,6 @@
   <div class="wrapper">
     <div class="problema-grid">
       <div>
-        <div class="section-label">Problema / Oportunidade</div>
         <h2 class="section-title">Migração externa comprometia o ecossistema de conversão</h2>
         <p class="section-body">
           O funil era claro: o usuário chegava pela IES Page, avançava para a listagem de cursos, e saía para o site da própria instituição para fechar a matrícula. A IES Page era o ponto de entrada, e também o primeiro ponto de perda de confiança.
@@ -460,7 +462,6 @@
 <!-- PROCESSO -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Processo</div>
     <h2 class="section-title">Reestruturação section by section, com escalabilidade desde o início</h2>
     <p class="section-body">
       A reestruturação foi feita seção por seção, uma decisão deliberada para reduzir risco em uma página grande com alto tráfego. O lançamento aconteceu com acompanhamento próximo de dados antes de qualquer expansão para outras IES.
@@ -508,7 +509,6 @@
 <!-- ANTES E DEPOIS -->
 <section class="section">
   <div class="wrapper">
-    <div class="section-label">Antes e Depois</div>
     <h2 class="section-title">Do repositório genérico à vitrine da instituição</h2>
     <p class="section-body">
       Nas imagens abaixo, a comparação entre o estado anterior e a nova experiência, com exemplos de duas IES mostrando como a identidade de marca é aplicada sem alteração estrutural.
@@ -524,7 +524,6 @@
 <section class="section">
   <div class="wrapper two-col">
     <div>
-      <div class="section-label">Decisão central</div>
       <h2 class="section-title">Uma estrutura base que virou infraestrutura de produto</h2>
       <p class="section-body">
         Criar uma arquitetura modular via CMS foi a decisão que viabilizou o projeto inteiro. Em vez de customizar caso a caso, a solução foi definir uma estrutura base planejada desde o início para escalar, com menor custo de design e engenharia.
@@ -590,6 +589,10 @@
       <p class="conclusion-body">
         Criar uma arquitetura base via CMS em vez de customizar caso a caso não foi só uma decisão de design. Foi uma decisão de produto. Ela viabilizou a expansão para 31 instituições sem retrabalho de engenharia, transformou uma intervenção pontual em capacidade instalada, e gerou +76% YoY na conversão para pagos. A hipótese de que identidade de marca dentro do marketplace aumenta confiança e retém o usuário no funil foi confirmada em escala.
       </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">← Voltar ao portfólio</a>
+        <a href="card.html" class="footer-link primary">Próximo case: Card de Oferta →</a>
+      </div>
       </div>
 </div>
 </section>
