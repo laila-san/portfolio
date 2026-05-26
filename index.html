@@ -58,6 +58,11 @@ body {
 @keyframes orbIn {
   to { opacity: 1; }
 }
+@keyframes statusPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.45); }
+  70%  { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
 
 .wrap { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
 
@@ -158,7 +163,7 @@ body {
 .mock-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/10;
   overflow: hidden;
   background: #13171f;
 }
@@ -185,6 +190,7 @@ body {
 .mock-slide.slide-prev {
   opacity: 0;
   transform: translateX(-28px);
+  filter: blur(3px);
   z-index: 1;
 }
 .mock-overlay {
@@ -296,7 +302,7 @@ body {
 }
 .word-inner.in { transform: translateY(0); opacity: 1; }
 .hero-subtitle {
-  font-size: 15px; font-weight: 400; color: #b8bdd4;
+  font-size: 17px; font-weight: 400; color: #c8cde0;
   max-width: 440px; line-height: 1.7; margin-bottom: 36px;
   opacity: 0; transform: translateY(22px);
   animation: fadeUp 0.95s var(--ease-out-expo) 0.85s forwards;
@@ -315,6 +321,7 @@ body {
   background: #22c55e;
   flex-shrink: 0;
   box-shadow: 0 0 0 3px rgba(34,197,94,0.18);
+  animation: statusPulse 2.2s ease-out infinite;
 }
 .hero-status-text {
   font-size: 13px;
@@ -371,7 +378,7 @@ body {
 }
 
 /* ─── CASES ─── */
-.cases { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.cases { padding: 88px 0; }
 .cases-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   margin-top: 0;
@@ -409,7 +416,7 @@ body {
 .case-card:hover .case-img img { transform: scale(1.02); }
 .case-body { padding: 18px 22px 22px; flex: 1; display: flex; flex-direction: column; }
 .case-cat {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.10em;
   text-transform: uppercase; color: #6E95FF; margin-bottom: 8px;
 }
 .case-desc { font-size: 17px; color: #b8bdd4; line-height: 1.6; }
@@ -429,7 +436,7 @@ body {
 }
 
 /* ─── SKILLS + EXPERIENCE ─── */
-.skills-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.skills-section { padding: 88px 0; }
 .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
 
 .skill-item {
@@ -461,12 +468,13 @@ body {
 .exp-period { font-size: 12px; color: #6b7280; margin-top: 1px; }
 
 /* ─── SOBRE MIM ─── */
-.about-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
-.about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: stretch; }
+.about-section { padding: 88px 0; }
+.about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: start; }
 .about-photo {
-  width: 100%; border-radius: 12px; overflow: hidden;
+  border-radius: 12px; overflow: hidden;
   border: 1px solid #1e2438;
   background: #1e2330;
+  display: flex; align-items: flex-end;
 }
 .about-name { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 20px; }
 .about-bio { font-size: 16px; color: #b8bdd4; line-height: 1.8; margin-bottom: 14px; max-width: 65ch; }
@@ -480,7 +488,7 @@ body {
 .about-link:hover { opacity: 0.75; }
 
 /* ─── FAQ ─── */
-.faq-section { padding: 88px 0; border-bottom: 1px solid #1a1f2a; }
+.faq-section { padding: 88px 0; }
 .faq-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 8px; margin-top: 32px;
@@ -585,13 +593,13 @@ body {
   pointer-events: none;
 }
 
-/* ─── SECTION HEADING UNDERLINE + WIPE ANIM ─── */
+/* ─── SECTION HEADING REVEAL ─── */
 .s-heading {
   position: relative; display: inline-block;
-  clip-path: inset(0 0 110% 0);
-  transition: clip-path 1.0s var(--ease-out-expo);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
 }
-.s-heading.in { clip-path: inset(0 0 0% 0); }
+.s-heading.in { opacity: 1; transform: translateY(0); }
 .s-heading::after {
   content: ''; display: block; position: absolute;
   bottom: -6px; left: 0; width: 0; height: 2px;
@@ -642,7 +650,7 @@ body {
   .skills-outer > *:nth-child(12) { order: 12; }
   .about-section { padding: 56px 0; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-photo { max-height: 300px; overflow: hidden; }
+  .about-photo { max-height: none; }
   .faq-section { padding: 56px 0; }
   .faq-grid { grid-template-columns: 1fr; }
   .cta-section { padding: 56px 0 48px; }
@@ -765,7 +773,6 @@ body {
 [data-theme="light"] .case-arrow { color: #304FFE; border-color: rgba(48,79,254,0.2); }
 [data-theme="light"] .case-card:hover .case-arrow { background: rgba(48,79,254,0.1); border-color: rgba(48,79,254,0.4); }
 
-[data-theme="light"] .skills-section { border-bottom-color: #e0e4f0; }
 [data-theme="light"] .skill-item { border-bottom-color: #e0e4f0; }
 [data-theme="light"] .skill-item:first-of-type { border-top-color: #e0e4f0; }
 [data-theme="light"] .skill-ic { background: rgba(48,79,254,0.06); border-color: rgba(48,79,254,0.14); }
@@ -779,14 +786,12 @@ body {
 [data-theme="light"] .skills-outer > *:nth-child(3),
 [data-theme="light"] .skills-outer > *:nth-child(4) { border-top-color: #e0e4f0; }
 
-[data-theme="light"] .about-section { border-bottom-color: #e0e4f0; }
 [data-theme="light"] .about-photo { border-color: #e0e4f0; background: #edf0f8; }
 [data-theme="light"] .about-name { color: #0d0f14; }
 [data-theme="light"] .about-bio { color: #4a5168; }
 [data-theme="light"] .about-bio strong { color: #0d0f14; }
 [data-theme="light"] .about-link { color: #304FFE; }
 
-[data-theme="light"] .faq-section { border-bottom-color: #e0e4f0; }
 [data-theme="light"] .faq-item { background: #ffffff; border-color: #e0e4f0; }
 [data-theme="light"] .faq-item:hover { background: #f7f8fd; border-color: #d5d9eb; }
 [data-theme="light"] .faq-q { color: #0d0f14; }
@@ -863,7 +868,7 @@ body {
           <span class="hero-status-text">Disponível para novas oportunidades</span>
         </div>
         <h1 class="hero-title">Product Designer que traduz problema de negócio em solução que converte.</h1>
-        <p class="hero-subtitle">Cinco anos operando na interseção entre produto, estratégia e resultado mensurável.</p>
+        <p class="hero-subtitle">Há mais de cinco anos operando na interseção entre produto, estratégia e resultado.</p>
         <div class="hero-actions">
           <a href="mailto:andrade.laila@hotmail.com" class="hero-cta">
             <i class="ph ph-envelope"></i> Entrar em contato
@@ -1092,13 +1097,12 @@ body {
     <h2 class="s-heading reveal">Sobre mim</h2>
     <div class="about-grid">
       <div class="about-photo reveal-left">
-        <img src="assets/foto-sobre-mim.png" alt="Laila Andrade" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:12px;">
+        <img src="assets/foto-sobre-mim.png" alt="Laila Andrade" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
       </div>
-      <div class="reveal-right d1" style="align-self:start;">
+      <div class="reveal-right d1">
         <div class="about-name">Laila Andrade</div>
-        <p class="about-bio">Sou Product Designer com mais de 5 anos de experiência e atuação além da interface: Entro junto na identificação do problema, participo das decisões de produto e uso dados para direcionar o design para o que realmente move resultado.</p>
-        <p class="about-bio">Lidero um time de Product Designers, com responsabilidade sobre roadmap, QA e desenvolvimento de carreira. Parte relevante do meu trabalho acontece fora do Figma: Alinhamento com PMs e stakeholders, análise de métricas para embasar priorização, mas mantenho atuação hands-on nos cenários mais críticos.</p>
-        <p class="about-bio">Tenho familiaridade com todo o ciclo de produto (discovery, prototipação, testes, análise de métricas e iteração). Utilizo a IA buscando novas formas de otimizar e impulsionar o processo de validação de hipóteses e tomada de decisão.</p>
+        <p class="about-bio">Sou Product Designer com mais de 5 anos atuando além da interface. Entro junto na identificação do problema, participo das decisões de produto e uso dados para direcionar o design para o que realmente move resultado. Hoje lidero um time de PDs com responsabilidade sobre roadmap, QA e desenvolvimento de carreira, mantendo atuação hands-on nos cenários mais críticos.</p>
+        <p class="about-bio">Tenho familiaridade com todo o ciclo de produto: discovery, prototipação, testes, análise de métricas e iteração. Incorporo IA no processo buscando ganho de velocidade e assertividade, sem abrir mão do julgamento sobre o que vale explorar.</p>
         <a href="https://www.linkedin.com/in/lailaandrade/" target="_blank" rel="noopener" class="about-link">Meu linkedin &nbsp;→</a>
       </div>
     </div>
@@ -1419,7 +1423,35 @@ body {
       });
     });
   })();
+
+  /* ── About photo: match height to text column ── */
+  (function () {
+    var photo   = document.querySelector('.about-photo');
+    var textCol = document.querySelector('.about-grid > :last-child');
+    if (!photo || !textCol) return;
+
+    function sync() {
+      photo.style.height = '';
+      if (window.innerWidth <= 768) return; // single-column: natural height
+      var h = textCol.offsetHeight;
+      if (h > 0) photo.style.height = h + 'px';
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', sync);
+    } else {
+      sync();
+    }
+    window.addEventListener('load', sync);
+    window.addEventListener('resize', function () {
+      photo.style.height = '';
+      requestAnimationFrame(sync);
+    });
+  })();
 </script>
 
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
 </body>
 </html>
