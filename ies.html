@@ -170,6 +170,15 @@
     letter-spacing: 0.04em; border-top: 1px solid #1e2438; text-align: center;
   }
 
+  /* ── Video mockup ── */
+  .video-mockup {
+    width: 100%; border-radius: 16px; overflow: hidden;
+    background: #0d0f1a;
+    border: 1px solid #1e2438;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .video-mockup video { width: 100%; display: block; }
+
   /* métricas */
   .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
   .metric-card {
@@ -253,6 +262,7 @@
     .conclusion-inner { padding: 0 20px; max-width: 100%; }
     .cfn-inner { padding: 0 20px !important; }
     .cfn-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .video-mockup { border-radius: 10px; }
   }
 
 
@@ -535,8 +545,10 @@
       </p>
     </div>
     <div>
-      <div class="image-full" style="margin-top: 0;">
-        <img src="assets/ies-cms-escalabilidade.png" alt="Escalabilidade via CMS — múltiplas IES com a mesma estrutura">
+      <div class="video-mockup">
+        <video autoplay muted loop playsinline>
+          <source src="assets/ies-demo.mp4" type="video/mp4">
+        </video>
         <div class="image-caption">Mesma arquitetura, identidades diferentes — escalabilidade via CMS</div>
       </div>
     </div>

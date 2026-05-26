@@ -155,6 +155,35 @@
     margin-top: 40px; background: var(--dark-card); border: 1px solid #1e2438;
   }
   .image-full img { width: 100%; display: block; }
+
+  /* ── Video mockup ── */
+  .video-mockup {
+    width: 100%; border-radius: 16px; overflow: hidden; margin-top: 40px;
+    background: #0d0f1a;
+    border: 1px solid #1e2438;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .video-mockup-chrome {
+    background: #13161f; padding: 11px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid #1a1f2e;
+  }
+  .video-mockup-dots { display: flex; gap: 6px; flex-shrink: 0; }
+  .video-mockup-dots span {
+    width: 11px; height: 11px; border-radius: 50%;
+    background: #2a2f40;
+  }
+  .video-mockup-dots span:nth-child(1) { background: #4a1f1f; }
+  .video-mockup-dots span:nth-child(2) { background: #3d3318; }
+  .video-mockup-dots span:nth-child(3) { background: #1a3020; }
+  .video-mockup-bar {
+    flex: 1; background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07); border-radius: 6px;
+    padding: 4px 14px; font-size: 11px; color: rgba(255,255,255,0.22);
+    text-align: center; letter-spacing: 0.02em;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .video-mockup video { width: 100%; display: block; }
   .image-caption {
     padding: 14px 20px; font-size: 12px; color: #8b92aa;
     letter-spacing: 0.04em; border-top: 1px solid #1e2438; text-align: center;
@@ -373,11 +402,14 @@
   </div>
 </section>
 
-<!-- HERO IMAGE: ESTADO BASE -->
+<!-- HERO VIDEO: DEMO PAYSTATION -->
 <div class="wrapper">
-  <div class="image-full">
-    <img src="assets/hero-1.png" alt="Paystation — checkout desktop estado base">
-    <div class="image-caption">Estado base — Desktop · Checkout white label · Cartão de crédito</div>
+  <div class="video-mockup">
+    <video autoplay muted loop playsinline poster="assets/hero-1.png">
+      <source src="assets/paystation-demo.mp4" type="video/mp4">
+      <source src="assets/paystation-demo.mov" type="video/quicktime">
+    </video>
+    <div class="image-caption">Paystation em ação — fluxo completo · Desktop e Mobile</div>
   </div>
 </div>
 
@@ -652,6 +684,9 @@
   .cfn-inner { padding: 0 20px !important; }
   .cfn-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
   .inline-two-col { grid-template-columns: 1fr !important; }
+  .video-mockup { border-radius: 10px; }
+  .video-mockup-chrome { padding: 9px 12px; }
+  .video-mockup-dots span { width: 9px; height: 9px; }
 }
 
 /* ─── REDUCED MOTION ─── */
